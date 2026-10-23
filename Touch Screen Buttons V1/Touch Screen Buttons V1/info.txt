@@ -1,0 +1,11 @@
+Hello this is v1 of the touch screen buttons asset pack:
+
+You are free to use this in any of your games.
+
+More assets will be added in the future.
+
+NOTE: If these assets don't scale up according to your games' resolution I recommend using Pixel Scaler by irokaru.
+
+Here's the link:
+
+https://irokaru.github.io/pixel-scaler/

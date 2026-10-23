@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://daqscoals41ft"]
+
+[ext_resource type="PackedScene" uid="uid://b7hhs6d30mh6a" path="res://assets/animation/anim.tscn" id="1_t5di2"]
+[ext_resource type="Script" uid="uid://cp6gdgioig20a" path="res://assets/characters/char.gd" id="1_vm2vp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vm2vp"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"_idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rbwp"]
+radius = 5.0
+height = 28.0
+
+[node name="Char" type="CharacterBody2D" unique_id=1969378017]
+script = ExtResource("1_vm2vp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1224996479]
+sprite_frames = SubResource("SpriteFrames_vm2vp")
+animation = &"_idle"
+
+[node name="Anim" parent="AnimatedSprite2D" unique_id=214869114 instance=ExtResource("1_t5di2")]
+
+[node name="AnimationPlayer" parent="AnimatedSprite2D/Anim" index="1" unique_id=1134920303]
+autoplay = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1470528378]
+position = Vector2(-1, -2)
+shape = SubResource("CapsuleShape2D_2rbwp")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1930765961]
+
+[editable path="AnimatedSprite2D/Anim"]
