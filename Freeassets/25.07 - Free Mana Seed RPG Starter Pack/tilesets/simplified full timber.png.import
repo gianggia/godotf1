@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b86emog5i1yar"
-path="res://.godot/imported/simplified full timber.png-b3021c55af369c8c7774271f248da472.ctex"
+path="res://.godot/imported/simplified full timber.png-29d12a661f4c7e74b9986910fe2c093c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/tilesets/simplified full timber.png"
-dest_files=["res://.godot/imported/simplified full timber.png-b3021c55af369c8c7774271f248da472.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/tilesets/simplified full timber.png"
+dest_files=["res://.godot/imported/simplified full timber.png-29d12a661f4c7e74b9986910fe2c093c.ctex"]
 
 [params]
 

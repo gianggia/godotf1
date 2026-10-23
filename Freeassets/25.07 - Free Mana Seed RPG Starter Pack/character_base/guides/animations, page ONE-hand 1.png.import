@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckcpulmv2p10r"
-path="res://.godot/imported/animations, page ONE-hand 1.png-df514e86b09edb2f9b7c1198382fc6f8.ctex"
+path="res://.godot/imported/animations, page ONE-hand 1.png-7c52618838b537a4c849232e315064a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/character_base/guides/animations, page ONE-hand 1.png"
-dest_files=["res://.godot/imported/animations, page ONE-hand 1.png-df514e86b09edb2f9b7c1198382fc6f8.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/character_base/guides/animations, page ONE-hand 1.png"
+dest_files=["res://.godot/imported/animations, page ONE-hand 1.png-7c52618838b537a4c849232e315064a0.ctex"]
 
 [params]
 

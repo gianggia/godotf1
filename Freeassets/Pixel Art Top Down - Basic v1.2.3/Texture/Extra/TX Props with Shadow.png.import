@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfmd36fobg11v"
-path="res://.godot/imported/TX Props with Shadow.png-2adb5ea7485493c3fecc23c079ba7c91.ctex"
+path="res://.godot/imported/TX Props with Shadow.png-f2fc5c04c861f2d3dc7629308ebff3af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/Pixel Art Top Down - Basic v1.2.3/Texture/Extra/TX Props with Shadow.png"
-dest_files=["res://.godot/imported/TX Props with Shadow.png-2adb5ea7485493c3fecc23c079ba7c91.ctex"]
+source_file="res://Freeassets/Pixel Art Top Down - Basic v1.2.3/Texture/Extra/TX Props with Shadow.png"
+dest_files=["res://.godot/imported/TX Props with Shadow.png-f2fc5c04c861f2d3dc7629308ebff3af.ctex"]
 
 [params]
 

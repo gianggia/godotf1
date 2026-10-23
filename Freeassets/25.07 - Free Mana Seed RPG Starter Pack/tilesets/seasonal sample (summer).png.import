@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dc1mcv83dvsce"
-path="res://.godot/imported/seasonal sample (summer).png-4bacef55e6d9392ee19f3aa4e3e6a9d0.ctex"
+path="res://.godot/imported/seasonal sample (summer).png-dc9c9a696970f343901b6540360d0a99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/tilesets/seasonal sample (summer).png"
-dest_files=["res://.godot/imported/seasonal sample (summer).png-4bacef55e6d9392ee19f3aa4e3e6a9d0.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/tilesets/seasonal sample (summer).png"
+dest_files=["res://.godot/imported/seasonal sample (summer).png-dc9c9a696970f343901b6540360d0a99.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djn22m8bhiifr"
-path="res://.godot/imported/npc man A v02.png-366185135d861ce7ae764f6d1e9bcda7.ctex"
+path="res://.godot/imported/npc man A v02.png-b147f479cf37e1f0a78e6ba7bca1e17b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/npcs/npc man A v02.png"
-dest_files=["res://.godot/imported/npc man A v02.png-366185135d861ce7ae764f6d1e9bcda7.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/npcs/npc man A v02.png"
+dest_files=["res://.godot/imported/npc man A v02.png-b147f479cf37e1f0a78e6ba7bca1e17b.ctex"]
 
 [params]
 

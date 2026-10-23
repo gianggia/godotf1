@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddhas2b7kryhw"
-path="res://.godot/imported/char_a_pONE3_1out_undi_v01.png-4baf683a81e77240a2df566a17cfd546.ctex"
+path="res://.godot/imported/char_a_pONE3_1out_undi_v01.png-2d1c6a396295ec8bc642ea5231011c98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/character_base/char_a_pONE3/1out/char_a_pONE3_1out_undi_v01.png"
-dest_files=["res://.godot/imported/char_a_pONE3_1out_undi_v01.png-4baf683a81e77240a2df566a17cfd546.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/character_base/char_a_pONE3/1out/char_a_pONE3_1out_undi_v01.png"
+dest_files=["res://.godot/imported/char_a_pONE3_1out_undi_v01.png-2d1c6a396295ec8bc642ea5231011c98.ctex"]
 
 [params]
 

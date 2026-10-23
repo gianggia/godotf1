@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ceq6b554op3bp"
-path="res://.godot/imported/cozy furnishings sampler.png-15f23899a44f4ed5c7902f42c67158d5.ctex"
+path="res://.godot/imported/cozy furnishings sampler.png-1853d0c574d99bcae49d0e49db2403e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/icons & objects/cozy furnishings sampler.png"
-dest_files=["res://.godot/imported/cozy furnishings sampler.png-15f23899a44f4ed5c7902f42c67158d5.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/icons & objects/cozy furnishings sampler.png"
+dest_files=["res://.godot/imported/cozy furnishings sampler.png-1853d0c574d99bcae49d0e49db2403e3.ctex"]
 
 [params]
 

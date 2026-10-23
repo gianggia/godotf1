@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqw7uuxmu7tki"
-path="res://.godot/imported/spring water sparkles B.png-97902b623670d27ce8cfbd52bdf32dd4.ctex"
+path="res://.godot/imported/spring water sparkles B.png-1758c9b82a33c3f03480e819ccf17c88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/tilesets/seasonal water animations/spring water sparkles B.png"
-dest_files=["res://.godot/imported/spring water sparkles B.png-97902b623670d27ce8cfbd52bdf32dd4.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/tilesets/seasonal water animations/spring water sparkles B.png"
+dest_files=["res://.godot/imported/spring water sparkles B.png-1758c9b82a33c3f03480e819ccf17c88.ctex"]
 
 [params]
 

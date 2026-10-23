@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmxgyk7kr4407"
-path="res://.godot/imported/chat bubble guide.png-0a4a8fc8ae9f92bb1a6f2da5f273a1a0.ctex"
+path="res://.godot/imported/chat bubble guide.png-9f382aab6db76201a23240def52547c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/fonts/chat bubble guide.png"
-dest_files=["res://.godot/imported/chat bubble guide.png-0a4a8fc8ae9f92bb1a6f2da5f273a1a0.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/fonts/chat bubble guide.png"
+dest_files=["res://.godot/imported/chat bubble guide.png-9f382aab6db76201a23240def52547c0.ctex"]
 
 [params]
 

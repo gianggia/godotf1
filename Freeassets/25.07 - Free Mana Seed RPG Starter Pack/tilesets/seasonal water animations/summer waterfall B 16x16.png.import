@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckoop0kd2lyg0"
-path="res://.godot/imported/summer waterfall B 16x16.png-c90433a0d9d2622a6b43276123776089.ctex"
+path="res://.godot/imported/summer waterfall B 16x16.png-e2c75e2e46ce600c2e3b2f682812408a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/tilesets/seasonal water animations/summer waterfall B 16x16.png"
-dest_files=["res://.godot/imported/summer waterfall B 16x16.png-c90433a0d9d2622a6b43276123776089.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/tilesets/seasonal water animations/summer waterfall B 16x16.png"
+dest_files=["res://.godot/imported/summer waterfall B 16x16.png-e2c75e2e46ce600c2e3b2f682812408a.ctex"]
 
 [params]
 

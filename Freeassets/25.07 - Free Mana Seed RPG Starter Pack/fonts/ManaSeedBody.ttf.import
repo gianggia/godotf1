@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://faf8a2aql8qd"
-path="res://.godot/imported/ManaSeedBody.ttf-9d8bdc5465e7109fcb7881db4b6ceca7.fontdata"
+path="res://.godot/imported/ManaSeedBody.ttf-d69ed9894d0e283822c6acdefc14631e.fontdata"
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/fonts/ManaSeedBody.ttf"
-dest_files=["res://.godot/imported/ManaSeedBody.ttf-9d8bdc5465e7109fcb7881db4b6ceca7.fontdata"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/fonts/ManaSeedBody.ttf"
+dest_files=["res://.godot/imported/ManaSeedBody.ttf-d69ed9894d0e283822c6acdefc14631e.fontdata"]
 
 [params]
 

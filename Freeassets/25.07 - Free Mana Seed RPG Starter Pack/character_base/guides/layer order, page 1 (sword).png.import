@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0k8jb86nj260"
-path="res://.godot/imported/layer order, page 1 (sword).png-2d78b384fd67080afe39d3a7d43d8276.ctex"
+path="res://.godot/imported/layer order, page 1 (sword).png-779600b9df92a185d272ca141ae13646.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/character_base/guides/layer order, page 1 (sword).png"
-dest_files=["res://.godot/imported/layer order, page 1 (sword).png-2d78b384fd67080afe39d3a7d43d8276.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/character_base/guides/layer order, page 1 (sword).png"
+dest_files=["res://.godot/imported/layer order, page 1 (sword).png-779600b9df92a185d272ca141ae13646.ctex"]
 
 [params]
 

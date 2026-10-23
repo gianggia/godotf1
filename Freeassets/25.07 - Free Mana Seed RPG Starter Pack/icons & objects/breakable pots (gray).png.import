@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dghybfcnl2rit"
-path="res://.godot/imported/breakable pots (gray).png-d5ec12541924eda447429af4cb39ab97.ctex"
+path="res://.godot/imported/breakable pots (gray).png-848fbf062c3933a6841eaa669b67a9fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/icons & objects/breakable pots (gray).png"
-dest_files=["res://.godot/imported/breakable pots (gray).png-d5ec12541924eda447429af4cb39ab97.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/icons & objects/breakable pots (gray).png"
+dest_files=["res://.godot/imported/breakable pots (gray).png-848fbf062c3933a6841eaa669b67a9fc.ctex"]
 
 [params]
 

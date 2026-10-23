@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ivnty2urxbkt"
-path="res://.godot/imported/winter water sparkles B 16x16.png-a7c61bd95ef203e71e8c5b9eb2d6bd57.ctex"
+path="res://.godot/imported/winter water sparkles B 16x16.png-e1ff4f48a5a42d0dca0ac21e600621fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/tilesets/seasonal water animations/winter water sparkles B 16x16.png"
-dest_files=["res://.godot/imported/winter water sparkles B 16x16.png-a7c61bd95ef203e71e8c5b9eb2d6bd57.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/tilesets/seasonal water animations/winter water sparkles B 16x16.png"
+dest_files=["res://.godot/imported/winter water sparkles B 16x16.png-e1ff4f48a5a42d0dca0ac21e600621fc.ctex"]
 
 [params]
 

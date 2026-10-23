@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1ijllyvn1maw"
-path="res://.godot/imported/layer order, page 1 (shield).png-43ba6bfddff0d9b0e0dc46f1d7cd4d5f.ctex"
+path="res://.godot/imported/layer order, page 1 (shield).png-1fb1958e4f0cefdbd0021f307f9ba231.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Freeassets/25.07 - Free Mana Seed RPG Starter Pack/character_base/guides/layer order, page 1 (shield).png"
-dest_files=["res://.godot/imported/layer order, page 1 (shield).png-43ba6bfddff0d9b0e0dc46f1d7cd4d5f.ctex"]
+source_file="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/character_base/guides/layer order, page 1 (shield).png"
+dest_files=["res://.godot/imported/layer order, page 1 (shield).png-1fb1958e4f0cefdbd0021f307f9ba231.ctex"]
 
 [params]
 
