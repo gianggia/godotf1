@@ -3,92 +3,69 @@ extends CharacterBody2D
 const SPEED = 300.0
 
 # --- ĐƯỜNG DẪN ĐẾN CÁC NODE CON ---
-@onready var anim = $AnimatedSprite2D/Anim/AnimationPlayer
-@onready var sprite = $AnimatedSprite2D/Anim/charSprite
+@onready var animation_tree = $AnimatedSprite2D/Anim/AnimationTree
+@onready var state_machine = animation_tree["parameters/playback"]
 @onready var weapon_sprite = $AnimatedSprite2D/Anim/WeaponSprite 
 
-# Các trạng thái của nhân vật
-enum State { IDLE, WALK, ATTACK }
-var current_state = State.IDLE
-
-var last_direction = "Down"
+var last_input_direction = Vector2.DOWN # Lưu hướng nhìn cuối cùng dạng Vector2
+var is_attacking = false
 
 func _ready() -> void:
 	weapon_sprite.visible = false
-	# Kết nối tín hiệu khi animation chạy xong hoàn toàn
-	anim.animation_finished.connect(_on_animation_finished)
+	# Tự động bật Active cho AnimationTree
+	animation_tree.active = true 
+	
+	# SỬA LẠI ĐÒNG NÀY: Điền đúng đường dẫn từ Node gốc của Scene (Node2D) đi xuống nút bấm
+	$"../CanvasLayer/MobileControls/BtnAtk".pressed.connect(_on_touch_screen_button_pressed)
 
 func _physics_process(delta: float) -> void:
-	# Lấy dữ liệu Input di chuyển
+	# 1. Lấy dữ liệu di chuyển từ hệ thống Input Map
 	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-
-	# --- 1. XỬ LÝ CHUYỂN ĐỔI TRẠNG THÁI (CHỈ XỬ LÝ DI CHUYỂN) ---
-	if current_state != State.ATTACK:
+	
+	# --- XỬ LÝ DI CHUYỂN VÀ CẬP NHẬT HƯỚNG ---
+	if not is_attacking:
 		if input_direction.length() > 0.2:
-			current_state = State.WALK
+			velocity = input_direction * SPEED
+			last_input_direction = input_direction.normalized() # Cập nhật hướng nhìn liên tục khi đi
+			
+			# Đồng bộ hướng vào BlendSpace2D của Walk và chuyển trạng thái sang Walk
+			animation_tree.set("parameters/walk/blend_position", input_direction)
+			state_machine.travel("walk")
 		else:
-			current_state = State.IDLE
-
-	# --- 2. THỰC THI LOGIC THEO TRẠNG THÁI ---
-	match current_state:
-		State.IDLE:
+			# Dừng nhân vật lại mượt mà
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 			
-			if last_direction == "Right": anim.play("idleRight")
-			elif last_direction == "Left": anim.play("idleLeft")
-			elif last_direction == "Up": anim.play("idleUp")
-			else: anim.play("idleDown")
+			# Đồng bộ hướng vào BlendSpace2D của Idle và chuyển trạng thái sang Idle
+			animation_tree.set("parameters/idle/blend_position", last_input_direction)
+			state_machine.travel("idle")
 			
-			move_and_slide()
-
-		State.WALK:
+		move_and_slide()
+	else:
+		# --- XỬ LÝ VỪA ĐI VỪA CHÉM ---
+		# Nếu đang chém mà người chơi vẫn vuốt joystick đi, nhân vật vẫn di chuyển theo hướng đó
+		if input_direction.length() > 0.2:
 			velocity = input_direction * SPEED
-			
-			if abs(input_direction.x) > abs(input_direction.y):
-				if input_direction.x > 0:
-					anim.play("walkRight")
-					last_direction = "Right"
-				else:
-					anim.play("walkLeft")
-					last_direction = "Left"
-			else:
-				if input_direction.y > 0:
-					anim.play("walkDown")
-					last_direction = "Down"
-				else:
-					anim.play("walkUp")
-					last_direction = "Up"
-					
-			move_and_slide()
-
-		State.ATTACK:
-			# Đứng yên khi chém và chỉ cho phép animation chạy, không làm gì khác
+		else:
 			velocity = Vector2.ZERO
-			move_and_slide()
+		move_and_slide()
 
-# --- 3. HÀM CHỈ KÍCH HOẠT ĐÚNG 1 LẦN KHI BẤM TouchScreenButton ---
+# --- HÀM KÍCH HOẠT KHI BẤM TouchScreenButton ---
 func _on_touch_screen_button_pressed() -> void:
-	# Nếu đang combo hoặc đang attack thì không cho bấm liên tục
-	if current_state == State.ATTACK:
-		return
+	if is_attacking: 
+		return # Đang chém nửa chừng thì chặn không cho spam nút bấm
 		
-	# Kích hoạt trạng thái tấn công
-	current_state = State.ATTACK
+	is_attacking = true
 	weapon_sprite.visible = true
 	
-	# Phát hoạt ảnh tương ứng theo hướng nhìn
-	if last_direction == "Right":
-		anim.play("attackRight")
-	elif last_direction == "Left":
-		anim.play("attackLeft")
-	elif last_direction == "Up":
-		anim.play("attackUp")
-	else:
-		anim.play("attackDown")
-
-# --- 4. XỬ LÝ KHI ANIMATION KẾT THÚC ---
-func _on_animation_finished(anim_name: String) -> void:
-	if current_state == State.ATTACK:
-		weapon_sprite.visible = false  # Ẩn vũ khí
-		current_state = State.IDLE     # Trả về đứng yên
+	# 1. Đồng bộ hướng đánh dựa trên hướng nhìn cuối cùng vào BlendSpace2D của Attack
+	animation_tree.set("parameters/attack/blend_position", last_input_direction)
+	
+	# 2. Ra lệnh cho StateMachine nhảy sang trạng thái chém lập tức
+	state_machine.travel("attack")
+	
+	# 3. Tạo một bộ hẹn giờ tự động ẩn vũ khí và mở khóa di chuyển khi kết thúc animation chém
+	# (Bạn hãy chỉnh số 0.3 này thành độ dài chính xác của animation chém của bạn nhé, ví dụ 0.2s hoặc 0.4s)
+	await get_tree().create_timer(0.3).timeout
+	weapon_sprite.visible = false
+	is_attacking = false
