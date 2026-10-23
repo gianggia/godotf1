@@ -11,6 +11,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vm2vp"]
+load_path = "res://.godot/imported/char_a_pONE1_6tla_ax01_v03.png-f3d92f4b82cb12c33323b5904f7fb802.ctex"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rbwp"]
 radius = 5.0
 height = 28.0
@@ -25,7 +28,11 @@ animation = &"_idle"
 [node name="Anim" parent="AnimatedSprite2D" unique_id=214869114 instance=ExtResource("1_t5di2")]
 
 [node name="AnimationPlayer" parent="AnimatedSprite2D/Anim" index="1" unique_id=1134920303]
-autoplay = &"idle"
+autoplay = &"idleDown"
+
+[node name="WeaponSprite" parent="AnimatedSprite2D/Anim" index="2" unique_id=630486732]
+texture = SubResource("CompressedTexture2D_vm2vp")
+offset = Vector2(-30, -35)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1470528378]
 position = Vector2(-1, -2)
