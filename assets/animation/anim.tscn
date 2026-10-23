@@ -52,6 +52,42 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-20, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_l063l"]
 resource_name = "w1"
@@ -91,6 +127,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_8o5sd"]
@@ -132,6 +192,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0, 0.0, 0.0, 0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.29580256),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.044763576, 0.14396934, 0.22563261, 0.29580256),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, 0), Vector2(-20, -15), Vector2(-20, -15), Vector2(-20, -15), Vector2(-20, -15)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.044763576, 0.14396934, 0.22623754),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.51, 1.51), Vector2(1.51, 1.51), Vector2(2.5, 2.5)]
+}
 
 [sub_resource type="Animation" id="Animation_d5frv"]
 resource_name = "attackRight"
@@ -171,6 +267,42 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [19, 17, 18, 19]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.026011268, 0.19478205),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.026011268, 0.050207794, 0.090132065, 0.17602974),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.026011268, 0.050207794, 0.090132065, 0.13973495, 0.17602974),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.51, 1.51), Vector2(1.51, 1.51), Vector2(2, 2), Vector2(3.155, 3.155), Vector2(2.47, 2.47), Vector2(1.46, 1.46)]
 }
 
 [sub_resource type="Animation" id="Animation_eqr06"]
@@ -212,10 +344,47 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0, 0.0, 0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.090132065, 0.14880864),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.355, 2.355), Vector2(3.79, 3.79)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.090132065),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_yg6n6"]
 resource_name = "idle"
 length = 1.2666667
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -232,6 +401,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_m3ovc"]
 resource_name = "idleLeft"
 length = 1.0666667
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -247,6 +417,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dqwmq"]
 resource_name = "idleRight"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -262,6 +433,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_m3qlt"]
 resource_name = "idleUp"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -278,6 +450,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_qbhr5"]
 resource_name = "walk"
 length = 1.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -294,6 +467,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_wwwtn"]
 resource_name = "walkLeft"
 length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -310,6 +484,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_e5xph"]
 resource_name = "walkRight"
 length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -326,6 +501,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_teuxg"]
 resource_name = "walkUp"
 length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -358,6 +534,8 @@ _data = {
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8o5sd"]
 load_path = "res://.godot/imported/char_a_pONE1_6tla_ax01_v03.png-f3d92f4b82cb12c33323b5904f7fb802.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_drsw1"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dko8h"]
 animation = &"attackRight"
@@ -488,6 +666,14 @@ hframes = 8
 vframes = 8
 frame = 14
 region_rect = Rect2(222, 27, 13, 10)
+
+[node name="HitBox" type="Area2D" parent="WeaponSprite" unique_id=1575994397]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponSprite/HitBox" unique_id=1803953369]
+position = Vector2(-20, 0)
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_drsw1")
+disabled = true
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1118988840]
 tree_root = SubResource("AnimationNodeStateMachine_8upip")
