@@ -5,6 +5,10 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_drsw1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8upip"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4f2yx"]
 atlas = ExtResource("2_wwmrk")
 region = Rect2(0, 256, 64, 64)
@@ -189,6 +193,38 @@ region = Rect2(192, 0, 64, 64)
 atlas = ExtResource("2_wwmrk")
 region = Rect2(256, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_keuks"]
+atlas = ExtResource("2_wwmrk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8w0q"]
+atlas = ExtResource("2_wwmrk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6o5rr"]
+atlas = ExtResource("2_wwmrk")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pwa7"]
+atlas = ExtResource("2_wwmrk")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcevc"]
+atlas = ExtResource("2_wwmrk")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pofql"]
+atlas = ExtResource("2_wwmrk")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsnvf"]
+atlas = ExtResource("2_wwmrk")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxvgs"]
+atlas = ExtResource("2_wwmrk")
+region = Rect2(192, 256, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dy5v7"]
 resource_local_to_scene = true
 animations = [{
@@ -364,6 +400,35 @@ animations = [{
 "loop": 1,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keuks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8w0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6o5rr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pwa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcevc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pofql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsnvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxvgs")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [node name="Monster" type="CharacterBody2D" unique_id=161886494]
@@ -382,14 +447,28 @@ scale = Vector2(0.85, 0.615)
 shape = SubResource("CircleShape2D_3owqy")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1901586902]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1601688638]
+shape = SubResource("CircleShape2D_drsw1")
+debug_color = Color(0.8331433, 0.38248602, 0.2213209, 0.41960785)
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1455950357]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1059552780]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_8upip")
+debug_color = Color(0.50241804, 0.5792856, 0.114832126, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1351733406]
 sprite_frames = SubResource("SpriteFrames_dy5v7")
-animation = &"hurtRight"
-frame_progress = 0.3819015
+animation = &"idle"
+autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=57010123]
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -55,7 +55,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:disabled")
+tracks/4/path = NodePath("HitBox/CollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -67,7 +67,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:scale")
+tracks/5/path = NodePath("HitBox/CollisionShape2D:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -79,7 +79,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:position")
+tracks/6/path = NodePath("HitBox/CollisionShape2D:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -131,7 +131,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitBox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -143,7 +143,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:scale")
+tracks/4/path = NodePath("HitBox/CollisionShape2D:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -195,7 +195,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitBox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -207,7 +207,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:position")
+tracks/4/path = NodePath("HitBox/CollisionShape2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -219,7 +219,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:scale")
+tracks/5/path = NodePath("HitBox/CollisionShape2D:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -271,7 +271,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitBox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -283,7 +283,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:position")
+tracks/4/path = NodePath("HitBox/CollisionShape2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -295,7 +295,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:scale")
+tracks/5/path = NodePath("HitBox/CollisionShape2D:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -347,7 +347,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitBox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -359,7 +359,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:scale")
+tracks/4/path = NodePath("HitBox/CollisionShape2D:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -371,7 +371,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("WeaponSprite/HitBox/CollisionShape2D:position")
+tracks/5/path = NodePath("HitBox/CollisionShape2D:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -535,8 +535,6 @@ _data = {
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8o5sd"]
 load_path = "res://.godot/imported/char_a_pONE1_6tla_ax01_v03.png-f3d92f4b82cb12c33323b5904f7fb802.ctex"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_drsw1"]
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dko8h"]
 animation = &"attackRight"
 
@@ -645,6 +643,8 @@ states/walk/node = SubResource("AnimationNodeBlendSpace2D_epfio")
 states/walk/position = Vector2(482, 65.2544)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_vo1n6"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_o5p6j"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_bmbjq"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_eymnw"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_2fnlm")]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_drsw1"]
+
 [node name="Anim" type="Node2D" unique_id=214869114]
 
 [node name="charSprite" type="Sprite2D" parent="." unique_id=1672329838]
@@ -667,17 +667,18 @@ vframes = 8
 frame = 14
 region_rect = Rect2(222, 27, 13, 10)
 
-[node name="HitBox" type="Area2D" parent="WeaponSprite" unique_id=1575994397]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponSprite/HitBox" unique_id=1803953369]
-position = Vector2(-20, 0)
-scale = Vector2(3, 3)
-shape = SubResource("CircleShape2D_drsw1")
-disabled = true
-
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1118988840]
 tree_root = SubResource("AnimationNodeStateMachine_8upip")
 anim_player = NodePath("../AnimationPlayer")
 parameters/attack/blend_position = Vector2(0, 0)
 parameters/idle/blend_position = Vector2(-0.0015686154, -0.007299304)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1575994397]
+position = Vector2(21, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1803953369]
+position = Vector2(-20, 0)
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_drsw1")
+disabled = true
