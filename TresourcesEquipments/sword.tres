@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemEquipment" format=3 uid="uid://d21cr1wixfshf"]
+
+[ext_resource type="Script" uid="uid://c31jl3kiehwv4" path="res://scripts/ItemEquipment.gd" id="1_c6p0j"]
+[ext_resource type="Texture2D" uid="uid://cegthcyhassh1" path="res://Simple Mobile Joystick/Simple Mobile Joystick/Joystick Handle.png" id="2_86y6n"]
+
+[resource]
+script = ExtResource("1_c6p0j")
+item_name = "ironsword"
+texture = ExtResource("2_86y6n")
+metadata/_custom_type_script = "uid://c31jl3kiehwv4"

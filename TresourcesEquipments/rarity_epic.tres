@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemRarity" format=3 uid="uid://bcngy7v0j6gsg"]
+
+[ext_resource type="Script" uid="uid://bsle8pims7c5r" path="res://scripts/ItemRarity.gd" id="1_cb4hw"]
+
+[resource]
+script = ExtResource("1_cb4hw")
+rarity_name = "Epic"
+text_color = Color(1, 0.9411765, 0.043137256, 1)
+drop_chance = 0.01
+metadata/_custom_type_script = "uid://bsle8pims7c5r"

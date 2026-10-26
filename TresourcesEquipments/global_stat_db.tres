@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="StatModifier" format=3 uid="uid://bei31vy0e1rpj"]
+
+[ext_resource type="Script" uid="uid://jrix0k1ovqy6" path="res://scripts/StatModifier.gd" id="1_n4xv4"]
+
+[resource]
+script = ExtResource("1_n4xv4")
+metadata/_custom_type_script = "uid://jrix0k1ovqy6"

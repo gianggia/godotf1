@@ -1,35 +1,47 @@
-class_name LootGenerator
 extends Node
+# File: LootGenerator.gd
 
-# Danh sách tất cả các dòng ẩn có thể xuất hiện trong game (Kéo thả các file mod_.tres vào đây)
-@export var all_modifiers: Array[StatModifier] = []
+# Drag and drop 'global_stat_db.tres' here in Inspector
+@export var stat_db: StatModifier
 
 func generate_weapon(base_weapon_res: ItemEquipment, rarity_res: ItemRarity) -> ItemEquipment:
-	# BẮT BUỘC: Nhân bản (Duplicate) file gốc để tránh việc sửa một cây kiếm làm tất cả cây kiếm khác bị sửa theo
-	var new_weapon = base_weapon_res.duplicate()
+	# 1. Duplicate the base item to create a unique instance in RAM
+	var new_weapon: ItemEquipment = base_weapon_res.duplicate()
 	new_weapon.rarity = rarity_res
+	new_weapon.bonus_stats = {} 
 	
-	# Xác định số lượng dòng ẩn dựa trên Độ hiếm (Ví dụ: Đồ trắng 0 dòng, Đồ cam 3 dòng)
-	var num_of_affixes = 0
+	if stat_db == null or stat_db.stat_database.is_empty():
+		return new_weapon
+		
+	# 2. Determine number of affixes based on English Rarity Name
+	var num_of_affixes: int = 0
 	match rarity_res.rarity_name:
-		"normal": num_of_affixes = 0
-		"rage": num_of_affixes = 1
-		"epic": num_of_affixes = 2
-		"legend": num_of_affixes = 3
+		"Common": num_of_affixes = 0
+		"Rare": num_of_affixes = 1
+		"Epic": num_of_affixes = 2
+		"Legendary": num_of_affixes = 3
 
-	# Tiến hành găm dòng ngẫu nhiên vào món đồ
-	var available_mods = all_modifiers.duplicate()
+	# 3. Get all stat codes available
+	var available_keys: Array = stat_db.stat_database.keys()
+	
+	# 4. Roll random stats loop
 	for i in range(num_of_affixes):
-		if available_mods.size() == 0: break
+		if available_keys.is_empty(): break
 		
-		# Chọn ngẫu nhiên 1 loại dòng (ví dụ: dòng Công)
-		var random_mod = available_mods.pick_random()
-		available_mods.erase(random_mod) # Xóa để không bị trùng dòng
+		var random_key = available_keys.pick_random()
+		available_keys.erase(random_key) 
 		
-		# Lăn xúc xắc lấy chỉ số ngẫu nhiên trong khoảng (Range) cho phép
-		var rolled_value = randi_range(random_mod.min_value, random_mod.max_value)
+		# Lấy mảng dữ liệu [Tên_Hiển_Thị, Min, Max] từ Dictionary
+		var stat_info: Array = stat_db.stat_database[random_key]
 		
-		# Lưu vào túi chỉ số của món đồ
-		new_weapon.bonus_stats[random_mod.stat_name] = rolled_value
+		# SỬA LẠI ĐOẠN NÀY: Chỉ định rõ vị trí index trong mảng, [1], [2]
+		var display_name: String = stat_info[0]
+		var min_val: int = stat_info[1]
+		var max_val: int = stat_info[2]
+		
+		# Lăn xúc xắc giá trị ngẫu nhiên
+		var rolled_value: int = randi_range(min_val, max_val)
+	
+		new_weapon.bonus_stats[display_name] = rolled_value
 		
 	return new_weapon

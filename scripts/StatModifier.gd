@@ -1,9 +1,12 @@
 class_name StatModifier
 extends Resource
 
-enum StatType { ATTACK, DEFENSE, MAX_HP, CRIT_CHANCE, CRIT_DAMAGE }
-
-@export var stat_type: StatType
-@export var stat_name: String = ""
-@export var min_value: int = 1
-@export var max_value: int = 10
+# Structure: { "Stat_Code": [ "Display Name", Min_Value, Max_Value ] }
+@export var stat_database: Dictionary = {
+	"atk": ["Bonus Attack", 5, 15],
+	"hp": ["Bonus Max HP", 50, 200],
+	"def": ["Bonus Defense", 2, 8],
+	"crit_c": ["Crit Chance", 1, 5],
+	"crit_d": ["Crit Damage", 10, 30],
+	"speed": ["Bonus Speed", 10, 30]
+}

@@ -1,13 +1,19 @@
 class_name ItemEquipment
 extends ItemData
 
-enum Slot { WEAPON, ARMOR, HELMET, RING, BOOT }
-# Định nghĩa các loại vũ khí cụ thể
-enum WeaponType { NONE, SWORD, BOW, HAMMER }
+@export_group("Base Stats")
+@export var base_attack: int = 10
+@export var base_defense: int = 0
 
-@export var slot_type: Slot = Slot.WEAPON
-@export var weapon_type: WeaponType = WeaponType.NONE
-@export var attack_power: int = 10
+# English Bonus Stats Dictionary: { "Display Name": Rolled_Value }
+var bonus_stats: Dictionary = {} 
 
-# Nạp cấu hình đòn đánh riêng vào đây
-@export var attack_behavior: AttackBehavior
+# Function to get full name with random stats in English
+func get_display_name() -> String:
+	var final_name = item_name
+	if not bonus_stats.is_empty():
+		final_name += " ("
+		for key in bonus_stats:
+			final_name += "+" + str(bonus_stats[key]) + " " + str(key) + ", "
+		final_name = final_name.rstrip(", ") + ")"
+	return final_name

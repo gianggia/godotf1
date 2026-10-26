@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemRarity" format=3 uid="uid://btosqwop12uo6"]
+
+[ext_resource type="Script" uid="uid://bsle8pims7c5r" path="res://scripts/ItemRarity.gd" id="1_nccv1"]
+
+[resource]
+script = ExtResource("1_nccv1")
+rarity_name = "Common"
+drop_chance = 0.1
+metadata/_custom_type_script = "uid://bsle8pims7c5r"
