@@ -575,7 +575,7 @@ tile_set = SubResource("TileSet_d5wie")
 position = Vector2(494, 230)
 
 [node name="Monster2" parent="monsters" unique_id=1442335495 instance=ExtResource("13_4qn2c")]
-position = Vector2(435, 374)
+position = Vector2(567, 331)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1033928761]
 layer = 10
