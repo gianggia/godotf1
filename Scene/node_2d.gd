@@ -1,28 +1,36 @@
-extends Node2D # Hoặc Node tùy theo Node gốc của Map bạn
+extends Node
 
-# 1. Khai báo các ô kéo thả tài nguyên mẫu ở Inspector
-@export var base_weapon_test: ItemEquipment # Ô kéo file sword.tres
-@export var rarity_test: Resource          # Ô kéo file rarity_legendary.tres (hoặc bậc khác)
+@export var base_weapon_test: ItemEquipment
+@export var base_armor_test: ItemEquipment
 
-# 2. Gọi Node LootGenerator đã gắn ở Bước 1
-@onready var loot_gen_node = $LootGenerator
+@onready var loot_gen_node= $LootGenerator # Nhớ check lại đường dẫn Node này trên Scene
 
 func _ready() -> void:
-	# Chờ 1 khung hình để đảm bảo mọi thứ đã nạp xong
 	await get_tree().process_frame
-	
-	print("--- BẮT ĐẦU KIỂM TRA HỆ THỐNG ĐÚC ĐỒ ---")
-	
-	# Kiểm tra nếu bạn quên chưa kéo thả file mẫu trên Inspector
-	if base_weapon_test == null or rarity_test == null:
-		print("Lỗi: Bạn chưa kéo thả file sword.tres hoặc file Rarity vào Inspector của Map!")
-		return
+	print("\n==================================================")
+	print("🎮 HỆ THỐNG KIỂM THỬ HÒM ĐỒ ĐÃ SẴN SÀNG:")
+	print(" 👉 Bấm phím [ G ] để ĐÚC ĐỒ & TỰ ĐỘNG SAVE")
+	print(" 👉 Bấm phím [ L ] để TẢI FILE SAVE (LOAD) & KIỂM TRA ĐỒ")
+	print("==================================================\n")
+
+func _unhandled_input(event: InputEvent) -> void:
+	# 1. BẤM PHÍM G ĐỂ TẠO ĐỒ & LƯU
+	if Input.is_key_label_pressed(KEY_G):
+		print("\n--- 🎲 ĐANG ĐÚC VÀ THÊM VẬT PHẨM MỚI ---")
 		
-	# 3. Tiến hành gọi hàm đúc đồ ngẫu nhiên từ khuôn gốc
-	var crafted_item: ItemEquipment = loot_gen_node.generate_weapon(base_weapon_test, rarity_test)
-	
-	# 4. In kết quả kiểm tra ra cửa sổ Output của Godot
-	print("Tên vật phẩm đúc ra: ", crafted_item.get_display_name())
-	print("Độ hiếm thực tế: ", crafted_item.rarity.rarity_name)
-	print("Bảng chỉ số ẩn dính kèm (bonus_stats): ", crafted_item.bonus_stats)
-	print("---------------------------------------")
+		if base_weapon_test and loot_gen_node:
+			var dropped_weapon = loot_gen_node.generate_equipment(base_weapon_test)
+			InventoryManager.add_to_player_inventory(dropped_weapon)
+		
+		if base_armor_test and loot_gen_node:
+			var dropped_armor = loot_gen_node.generate_equipment(base_armor_test)
+			InventoryManager.add_to_player_inventory(dropped_armor)
+
+	# 2. BẤM PHÍM L ĐỂ LOAD FILE VÀ IN RA KIỂM TRA
+	if Input.is_key_label_pressed(KEY_L):
+		print("\n--- 📂 ĐANG ĐỌC FILE SAVE VÀ DỰNG LẠI HÒM ĐỒ ---")
+		SaveManager.load_game()
+		
+		# Gọi hàm debug quét sạch hòm đồ trong RAM
+		if InventoryManager.player_inventory:
+			InventoryManager.player_inventory.debug_print_inventory_contents()

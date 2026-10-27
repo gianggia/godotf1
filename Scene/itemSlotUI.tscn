@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cobrb8cq3825f"]
+
+[ext_resource type="Script" uid="uid://rd8bxdj2hkkh" path="res://scripts/UI/inventory/ItemSlotUI.gd" id="1_508su"]
+[ext_resource type="Texture2D" uid="uid://bmfvsm46o1861" path="res://Freeassets/Ultimate Weapon Pack – 2D Pixel Art/Ultimate Weapon Pack – 2D Pixel Art/PNG/Armas (2).png" id="2_1jsre"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdfjr"]
+atlas = ExtResource("2_1jsre")
+region = Rect2(22, 677, 20, 21)
+
+[node name="ItemSlotUi" type="Button" unique_id=1791620477]
+custom_minimum_size = Vector2(120, 120)
+custom_maximum_size = Vector2(120, 120)
+offset_right = 120.0
+offset_bottom = 120.0
+focus_mode = 0
+script = ExtResource("1_508su")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=646312530]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_hdfjr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="QuantityLabel" type="Label" parent="." unique_id=216483982]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "99"
+horizontal_alignment = 1
+
+[node name="BorderHighlight" type="ReferenceRect" parent="." unique_id=344264824]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(0.22745098, 0.8627451, 0.38431373, 1)
+border_width = 3.4
+editor_only = false

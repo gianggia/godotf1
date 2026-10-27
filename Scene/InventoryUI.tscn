@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://d4beovqrdlq1c"]
+
+[ext_resource type="Script" uid="uid://dkg7ax0m51xvi" path="res://scripts/UI/inventory/InventoryUI.gd" id="1_lucco"]
+
+[node name="InventoryUI" type="Control" unique_id=1727145737]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lucco")
+
+[node name="Background" type="ColorRect" parent="." unique_id=262981296]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011764706, 0.08235294, 0.23529412, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=627013348]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -320.0
+offset_bottom = 500.0
+grow_horizontal = 2
+
+[node name="ItemGrid" type="GridContainer" parent="ScrollContainer" unique_id=1059720627]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+accessibility_region = true
+columns = 4

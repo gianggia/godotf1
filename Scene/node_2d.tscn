@@ -1,12 +1,13 @@
 [gd_scene format=4 uid="uid://g3npo1j4ggfr"]
 
 [ext_resource type="Script" uid="uid://bwcdhc0d66dnn" path="res://Scene/node_2d.gd" id="1_cd8bm"]
-[ext_resource type="Script" uid="uid://cevne2vkkg6ms" path="res://scripts/LootGenerator.gd" id="1_cjhdi"]
+[ext_resource type="Script" uid="uid://cevne2vkkg6ms" path="res://scripts/item/LootGenerator.gd" id="1_cjhdi"]
 [ext_resource type="Texture2D" uid="uid://tl4v1uye0rnj" path="res://assets/Scene Overview.png" id="1_romgu"]
-[ext_resource type="Resource" uid="uid://d21cr1wixfshf" path="res://TresourcesEquipments/sword.tres" id="2_77btt"]
+[ext_resource type="Resource" uid="uid://d21cr1wixfshf" path="res://TresourcesEquipments/swordtest.tres" id="2_77btt"]
 [ext_resource type="PackedScene" uid="uid://daqscoals41ft" path="res://assets/characters/char.tscn" id="2_vtyw1"]
 [ext_resource type="Texture2D" uid="uid://cok0yk7mvo6j7" path="res://Touch Screen Buttons V1/Touch Screen Buttons V1/4 directional round shape/btn_left.png" id="3_gj2p5"]
 [ext_resource type="Resource" uid="uid://csyh5r5rcxpby" path="res://TresourcesEquipments/rarity_legendary.tres" id="3_gn1ci"]
+[ext_resource type="Resource" uid="uid://dxsa01i2f7s6s" path="res://TresourcesEquipments/armor.tres" id="3_ub8w0"]
 [ext_resource type="Texture2D" uid="uid://cthyyir8ray14" path="res://Touch Screen Buttons V1/Touch Screen Buttons V1/4 directional round shape/btn_right.png" id="4_l42dj"]
 [ext_resource type="Texture2D" uid="uid://dbeoqnk38kp6k" path="res://Touch Screen Buttons V1/Touch Screen Buttons V1/4 directional round shape/btn_up.png" id="5_irwgg"]
 [ext_resource type="Texture2D" uid="uid://tru88j8x1n5e" path="res://Touch Screen Buttons V1/Touch Screen Buttons V1/4 directional round shape/btn_down.png" id="6_xvxua"]
@@ -18,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://d3ct1x0v1aeyq" path="res://Simple Mobile Joystick/Simple Mobile Joystick/Aim Joystick Handle.png" id="10_p2l5e"]
 [ext_resource type="PackedScene" uid="uid://siqtgqohfsrg" path="res://Scene/monster.tscn" id="13_4qn2c"]
 [ext_resource type="Resource" uid="uid://bei31vy0e1rpj" path="res://TresourcesEquipments/global_stat_db.tres" id="16_rd0ta"]
+[ext_resource type="Script" uid="uid://bsle8pims7c5r" path="res://scripts/item/ItemRarity.gd" id="18_b4pas"]
+[ext_resource type="Resource" uid="uid://btosqwop12uo6" path="res://TresourcesEquipments/rarity_common.tres" id="19_ub8w0"]
+[ext_resource type="Resource" uid="uid://btbtym10v5pc1" path="res://TresourcesEquipments/rarity_rare.tres" id="20_rqitt"]
+[ext_resource type="Resource" uid="uid://bcngy7v0j6gsg" path="res://TresourcesEquipments/rarity_epic.tres" id="21_yyoe5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3opw3"]
 texture = ExtResource("8_blrne")
@@ -531,7 +536,7 @@ sources/1 = SubResource("TileSetAtlasSource_3opw3")
 y_sort_enabled = true
 script = ExtResource("1_cd8bm")
 base_weapon_test = ExtResource("2_77btt")
-rarity_test = ExtResource("3_gn1ci")
+base_armor_test = ExtResource("3_ub8w0")
 
 [node name="SceneOverview" type="Sprite2D" parent="." unique_id=1234898364]
 scale = Vector2(1, 1.092)
@@ -667,6 +672,7 @@ texture_normal = ExtResource("10_p2l5e")
 [node name="LootGenerator" type="Node2D" parent="." unique_id=728764187]
 script = ExtResource("1_cjhdi")
 stat_db = ExtResource("16_rd0ta")
+rarities = Array[ExtResource("18_b4pas")]([ExtResource("19_ub8w0"), ExtResource("20_rqitt"), ExtResource("21_yyoe5"), ExtResource("3_gn1ci")])
 
 [connection signal="pressed" from="CanvasLayer/MobileControls/BtnAtk" to="Char" method="_on_touch_screen_button_pressed"]
 
