@@ -24,7 +24,7 @@ color = Color(0.011764706, 0.08235294, 0.23529412, 1)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_right = -320.0
+offset_right = -120.0
 offset_bottom = 500.0
 grow_horizontal = 2
 
@@ -34,4 +34,4 @@ size_flags_horizontal = 3
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 accessibility_region = true
-columns = 4
+columns = 6

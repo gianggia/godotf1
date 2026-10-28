@@ -1,9 +1,9 @@
 # File: ItemEquipment.gd (hoặc ItemBase.gd nơi bạn định nghĩa cấu trúc vật phẩm)
 class_name ItemEquipment
-extends Resource
+extends ItemData
 
 @export var item_id: String = ""             # Dùng để tra cứu khi Save/Load JSON
-@export var rarity: ItemRarity               # <--- THÊM DÒNG NÀY ĐỂ SỬA LỖI INVALID ASSIGNMENT
+			 # <--- THÊM DÒNG NÀY ĐỂ SỬA LỖI INVALID ASSIGNMENT
 
 
 # Thêm loại trang bị để phân biệt khi đúc đồ và mặc đồ

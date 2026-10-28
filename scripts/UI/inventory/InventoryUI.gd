@@ -1,41 +1,81 @@
 extends Control
 
-# 1. Đường dẫn tới file ô đồ đơn lẻ mà bạn đã làm ở Bước trước
-# Bạn hãy kiểm tra xem tên file trong thư mục của bạn có đúng là "ItemSlotUI.tscn" không nhé
+# 1. Định nghĩa các đường dẫn Node và Scene
 const ITEM_SLOT_UI_SCENE = preload("res://Scene/itemSlotUI.tscn") 
-
-# 2. Kết nối tới lưới GridContainer trên giao diện
 @onready var item_grid: GridContainer = $ScrollContainer/ItemGrid
 
-func _ready() -> void:
-	# Khi hòm đồ vừa mở lên, chạy hàm vẽ các ô đồ ngay
-	render_inventory()
+# Đường dẫn lưu file dữ liệu JSON thực tế trên thiết bị
+const SAVE_FILE_PATH = "user://save_game.json"
 
-# 3. Hàm tạo ô đồ tự động
-func render_inventory() -> void:
-	# Xóa các ô cũ trong lưới nếu có (để tránh bị trùng lặp dữ liệu)
+# Biến lưu trữ Instance dữ liệu RAM hòm đồ
+var inventory_data: InventoryData
+
+func _ready() -> void:
+	# Khởi tạo đối tượng quản lý bộ nhớ RAM hòm đồ
+	inventory_data = InventoryData.new()
+	inventory_data.initialize_inventory()
+	
+	# Đăng ký UI lắng nghe tín hiệu phát ra từ RAM dữ liệu
+	inventory_data.inventory_updated.connect(update_ui)
+	
+	# Gọi hàm nạp dữ liệu thực tế từ file JSON lên
+	load_inventory_from_file()
+func load_inventory_from_file() -> void:
+
+	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
+	var json_string = file.get_as_text()
+	file.close()
+	
+	var json = JSON.new()
+	var parse_result = json.parse(json_string)
+	
+	if parse_result == OK:
+		var data_dict = json.get_data()
+		
+		if data_dict.has("inventory"):
+			var inventory_content = data_dict["inventory"]
+			inventory_data.from_dict(inventory_content)
+		
+		# 🌟 ĐÂY CHÍNH LÀ DÒNG QUAN TRỌNG: Ép UI phải vẽ lại dựa trên RAM vừa nạp
+		update_ui(inventory_data) 
+		
+		inventory_data.debug_print_inventory_contents()
+	else:
+		print("❌ Lỗi parse cấu trúc file JSON: ", json.get_error_message())
+
+
+
+# 4. Hàm vẽ tự động 30 ô đồ lên giao diện mỗi khi dữ liệu thay đổi
+func update_ui(inv_data: InventoryData) -> void:
+	# Dọn dẹp sạch các node giao diện cũ
 	for child in item_grid.get_children():
 		child.queue_free()
 		
-	# Quy định số lượng ô đồ bạn muốn có trong hòm (Ví dụ: game của bạn có 20 ô)
-	var total_slots = 30
-	
-	# Vòng lặp để tự động tạo ra 20 ô đồ xếp vào lưới
-	for i in range(total_slots):
-		# Nhân bản một ô đồ từ file thiết kế thô (ItemSlotUI.tscn)
+	# Duyệt qua mảng slots trong RAM để ánh xạ lên lưới giao diện
+	for i in range(inv_data.slots.size()):
 		var slot_instance = ITEM_SLOT_UI_SCENE.instantiate() as ItemSlotUI
-		
-		# Thêm ô đồ này vào làm con của lưới GridContainer
 		item_grid.add_child(slot_instance)
 		
-		# Giả lập nạp dữ liệu trống cho ô đồ (Lát nữa chúng ta sẽ đổ vật phẩm thật sau)
-		var empty_data = {}
-		slot_instance.update_slot(i, empty_data)
+		var inv_item: InventoryItem = inv_data.slots[i]
+		var final_ui_data = {}
 		
-		# Lắng nghe sự kiện khi người chơi bấm vào ô này
+		# Kiểm tra nếu ô bộ nhớ đang chứa vật phẩm trang bị hợp lệ
+		if inv_item != null and inv_item.item_data != null:
+			var equipment: ItemEquipment = inv_item.item_data
+			
+			# Kiểm tra xem file .tres được load lên thông qua ITEM_DATABASE đã có ảnh hay chưa
+			if equipment.texture:
+				final_ui_data = {
+					"icon_path": equipment.texture, # Đẩy thẳng đối tượng kết cấu ảnh Texture2D sang UI
+					"quantity": inv_item.quantity
+				}
+		
+		# Đồng bộ dữ liệu xuống node ItemSlotUI cụ thể
+		slot_instance.update_slot(i, final_ui_data)
+		
+		# Đăng ký sự kiện bấm ô đồ
 		slot_instance.pressed.connect(_on_item_slot_pressed.bind(slot_instance))
 
-# 4. Hàm xử lý khi người chơi chạm vào một ô bất kỳ
+# 5. Xử lý logic tương tác khi click chuột
 func _on_item_slot_pressed(slot_ui: ItemSlotUI) -> void:
-	print("Bạn vừa bấm vào ô đồ số: ", slot_ui.slot_index)
-	# Lát nữa chúng ta sẽ viết code bật viền sáng và hiện bảng chi tiết ở đây
+	print("Bấm vào ô số: ", slot_ui.slot_index)

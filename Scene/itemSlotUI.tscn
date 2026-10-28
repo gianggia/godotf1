@@ -1,15 +1,10 @@
 [gd_scene format=3 uid="uid://cobrb8cq3825f"]
 
 [ext_resource type="Script" uid="uid://rd8bxdj2hkkh" path="res://scripts/UI/inventory/ItemSlotUI.gd" id="1_508su"]
-[ext_resource type="Texture2D" uid="uid://bmfvsm46o1861" path="res://Freeassets/Ultimate Weapon Pack – 2D Pixel Art/Ultimate Weapon Pack – 2D Pixel Art/PNG/Armas (2).png" id="2_1jsre"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hdfjr"]
-atlas = ExtResource("2_1jsre")
-region = Rect2(22, 677, 20, 21)
 
 [node name="ItemSlotUi" type="Button" unique_id=1791620477]
-custom_minimum_size = Vector2(120, 120)
-custom_maximum_size = Vector2(120, 120)
+custom_minimum_size = Vector2(80, 80)
+custom_maximum_size = Vector2(80, 80)
 offset_right = 120.0
 offset_bottom = 120.0
 focus_mode = 0
@@ -22,7 +17,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_hdfjr")
 expand_mode = 1
 stretch_mode = 5
 
@@ -37,7 +31,6 @@ offset_left = -25.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "99"
 horizontal_alignment = 1
 
 [node name="BorderHighlight" type="ReferenceRect" parent="." unique_id=344264824]

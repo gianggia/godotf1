@@ -21,10 +21,12 @@ func update_slot(index: int, item_data: Dictionary) -> void:
 		label_node.text = ""
 		return
 		
-	# TRƯỜNG HỢP 2: Có vật phẩm -> Kiểm tra đường dẫn và nạp ảnh
-	var path = item_data.get("icon_path", "")
-	if path != "" and ResourceLoader.exists(path):
-		icon_node.texture = load(path)
+	# TRƯỜNG HỢP 2: Có vật phẩm -> Lấy thẳng Object ảnh đã nạp sẵn
+	var texture_object = item_data.get("icon_path", null)
+	
+	# Kiểm tra nếu dữ liệu truyền xuống đúng là một Object hình ảnh (Texture2D)
+	if texture_object is Texture2D:
+		icon_node.texture = texture_object
 	else:
 		icon_node.texture = null
 		

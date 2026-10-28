@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="ItemEquipment" format=3 uid="uid://dxsa01i2f7s6s"]
 
 [ext_resource type="Script" uid="uid://c31jl3kiehwv4" path="res://scripts/item/ItemEquipment.gd" id="1_qeg0f"]
+[ext_resource type="Texture2D" uid="uid://cmcwn8s7yqihs" path="res://mau.png" id="2_an7qo"]
 
 [resource]
 script = ExtResource("1_qeg0f")
 item_id = "armor_base"
 equipment_type = "Armor"
+texture = ExtResource("2_an7qo")
 metadata/_custom_type_script = "uid://c31jl3kiehwv4"
