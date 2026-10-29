@@ -19,7 +19,7 @@ func _ready() -> void:
 	animation_tree.active = true 
 	
 	# Kết nối nút bấm cảm ứng trên Mobile (Giữ nguyên)
-	$"../CanvasLayer/MobileControls/BtnAtk".pressed.connect(_on_touch_screen_button_pressed)
+	$"../BaseHUDCanvasLayer/MobileControls/BtnAtk".pressed.connect(_on_touch_screen_button_pressed)
 
 func _physics_process(delta: float) -> void:
 	# --- THÊM MỚI: KIỂM TRA PHÍM J TRÊN BÀN PHÍM ---

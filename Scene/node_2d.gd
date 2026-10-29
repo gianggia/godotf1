@@ -4,6 +4,8 @@ extends Node
 @export var base_armor_test: ItemEquipment
 
 @onready var loot_gen_node= $LootGenerator # Nhớ check lại đường dẫn Node này trên Scene
+@onready var menu_ui: CanvasLayer = $BaseHUDCanvasLayer
+#@onready var inventory_button: Button = $BaseHUDCanvasLayer/MobileControls/BtnMenu
 
 func _ready() -> void:
 	await get_tree().process_frame
