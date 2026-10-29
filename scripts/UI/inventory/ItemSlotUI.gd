@@ -42,3 +42,18 @@ func set_highlight(is_selected: bool) -> void:
 	var border_node = get_node_or_null("BorderHighlight") as ReferenceRect
 	if border_node:
 		border_node.visible = is_selected
+
+
+func _ready() -> void:
+	# TỰ GẮN SỰ KIỆN: Ép chính nó lắng nghe sự kiện bấm của chính nó
+	self.pressed.connect(_on_self_pressed)
+
+# Hàm này sẽ chạy NGAY LẬP TỨC khi phần cứng nhận được cú click vào ô này
+func _on_self_pressed() -> void:
+	print("=> [CHẮC CHẮN] Ô đồ số ", slot_index, " đã chạy vào hàm bấm thành công!")
+func _pressed() -> void:
+	print("=> [VẬT LÝ] Ô đồ số ", slot_index, " vừa được bấm trực tiếp từ phần cứng!")
+
+
+func _on_pressed() -> void:
+	print("=> on-press [VẬT LÝ] Ô đồ số ", slot_index, " vừa được bấm trực tiếp từ phần cứng!")

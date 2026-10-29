@@ -8,6 +8,7 @@ custom_maximum_size = Vector2(80, 80)
 offset_right = 80.0
 offset_bottom = 80.0
 focus_mode = 0
+mouse_filter = 2
 script = ExtResource("1_508su")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=646312530]
@@ -17,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
@@ -40,6 +42,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 border_color = Color(0.22745098, 0.8627451, 0.38431373, 1)
 border_width = 3.4
 editor_only = false
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

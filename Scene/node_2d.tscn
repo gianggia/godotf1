@@ -19,8 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://d3ct1x0v1aeyq" path="res://Simple Mobile Joystick/Simple Mobile Joystick/Aim Joystick Handle.png" id="10_p2l5e"]
 [ext_resource type="PackedScene" uid="uid://siqtgqohfsrg" path="res://Scene/monster.tscn" id="13_4qn2c"]
 [ext_resource type="Resource" uid="uid://bei31vy0e1rpj" path="res://TresourcesEquipments/global_stat_db.tres" id="16_rd0ta"]
-[ext_resource type="Texture2D" uid="uid://b41yjccokmymo" path="res://icon.svg" id="17_yyoe5"]
+[ext_resource type="Texture2D" uid="uid://erfgf7no4gy7" path="res://Touch Screen Buttons V1/Touch Screen Buttons V1/4 directional hexagonal shape/touch_menu.png" id="17_yyoe5"]
 [ext_resource type="Script" uid="uid://bsle8pims7c5r" path="res://scripts/item/ItemRarity.gd" id="18_b4pas"]
+[ext_resource type="Texture2D" uid="uid://dp36wqidf68fu" path="res://Touch Screen Buttons V1/Touch Screen Buttons V1/4 directional hexagonal shape/touch_reload.png" id="18_hdfjr"]
 [ext_resource type="Resource" uid="uid://btosqwop12uo6" path="res://TresourcesEquipments/rarity_common.tres" id="19_ub8w0"]
 [ext_resource type="Resource" uid="uid://btbtym10v5pc1" path="res://TresourcesEquipments/rarity_rare.tres" id="20_rqitt"]
 [ext_resource type="Resource" uid="uid://bcngy7v0j6gsg" path="res://TresourcesEquipments/rarity_epic.tres" id="21_yyoe5"]
@@ -675,6 +676,10 @@ texture_normal = ExtResource("10_p2l5e")
 position = Vector2(460, -522)
 texture_normal = ExtResource("17_yyoe5")
 
+[node name="lootBtn" type="TouchScreenButton" parent="BaseHUDCanvasLayer/MobileControls" unique_id=1215383534]
+position = Vector2(461, -364)
+texture_normal = ExtResource("18_hdfjr")
+
 [node name="LootGenerator" type="Node2D" parent="." unique_id=728764187]
 script = ExtResource("1_cjhdi")
 stat_db = ExtResource("16_rd0ta")
@@ -684,6 +689,7 @@ rarities = Array[ExtResource("18_b4pas")]([ExtResource("19_ub8w0"), ExtResource(
 
 [connection signal="pressed" from="BaseHUDCanvasLayer/MobileControls/BtnAtk" to="Char" method="_on_touch_screen_button_pressed"]
 [connection signal="pressed" from="BaseHUDCanvasLayer/MobileControls/BtnMenu" to="MenuUi" method="toggle_menu"]
+[connection signal="pressed" from="BaseHUDCanvasLayer/MobileControls/lootBtn" to="." method="_on_loot_btn_pressed"]
 
 [editable path="Char"]
 [editable path="Char/AnimatedSprite2D/Anim"]

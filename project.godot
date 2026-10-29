@@ -24,9 +24,10 @@ SaveManager="*uid://dgrcu6fuyn14e"
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
+window/size/window_width_override=422
+window/size/window_height_override=918
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-window/handheld/orientation=5
 
 [input]
 

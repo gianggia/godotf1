@@ -26,14 +26,16 @@ offset_bottom = -507.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.0649096, 1.691056)
+mouse_filter = 1
 
 [node name="TabBarContainer" type="HBoxContainer" parent="MainPanel" unique_id=939511895]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_right = -20.0
+offset_right = -376.0
 offset_bottom = 40.0
 grow_horizontal = 2
+scale = Vector2(2, 2)
 
 [node name="ButtonInventory" type="Button" parent="MainPanel/TabBarContainer" unique_id=508192242]
 custom_minimum_size = Vector2(37, 31)
@@ -52,12 +54,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 41.0
-offset_right = 2.0
-offset_bottom = -80.0
+offset_left = -2.8171396
+offset_top = 70.96158
+offset_right = -2.8171387
+offset_bottom = -50.038452
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="InventoryUI" parent="MainPanel/ContentContainer" unique_id=1727145737 instance=ExtResource("2_fo0q4")]
 layout_mode = 1
@@ -69,9 +72,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 134.0
-offset_right = -1.0
-offset_bottom = -7.0
+offset_left = 0.93904567
+offset_top = -3.5480652
+offset_right = 0.9390259
+offset_bottom = -144.54807
 grow_horizontal = 2
 grow_vertical = 2

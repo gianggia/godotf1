@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bh8wjynt4qsl4"]
+
+[ext_resource type="Script" uid="uid://b3dbnudjyebgh" path="res://scripts/UI/inventory/item_details.gd" id="1_e27ei"]
+
+[node name="ItemDetails" type="Control" unique_id=101055643]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_e27ei")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=666776374]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+
+[node name="NameLabel" type="Label" parent="." unique_id=222400328]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+mouse_filter = 0
+
+[node name="DescLabel" type="Label" parent="." unique_id=1635546450]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+mouse_filter = 0

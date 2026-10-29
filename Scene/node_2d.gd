@@ -36,3 +36,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Gọi hàm debug quét sạch hòm đồ trong RAM
 		if InventoryManager.player_inventory:
 			InventoryManager.player_inventory.debug_print_inventory_contents()
+
+
+func _on_loot_btn_pressed() -> void:
+	print("\n--- 🎲 [UI] ĐANG ĐÚC VÀ THÊM VẬT PHẨM MỚI ---")
+	
+	if base_weapon_test and loot_gen_node:
+		var dropped_weapon = loot_gen_node.generate_equipment(base_weapon_test)
+		InventoryManager.add_to_player_inventory(dropped_weapon)
+	
+	if base_armor_test and loot_gen_node:
+		var dropped_armor = loot_gen_node.generate_equipment(base_armor_test)
+		InventoryManager.add_to_player_inventory(dropped_armor)

@@ -3,6 +3,7 @@ extends Control
 # 1. Định nghĩa các đường dẫn Node và Scene
 const ITEM_SLOT_UI_SCENE = preload("res://Scene/itemSlotUI.tscn") 
 @onready var item_grid: GridContainer = $ScrollContainer/ItemGrid
+@onready var detail_popup = $ItemDetails
 
 # Đường dẫn lưu file dữ liệu JSON thực tế trên thiết bị
 const SAVE_FILE_PATH = "user://save_game.json"
@@ -76,6 +77,45 @@ func update_ui(inv_data: InventoryData) -> void:
 		# Đăng ký sự kiện bấm ô đồ
 		slot_instance.pressed.connect(_on_item_slot_pressed.bind(slot_instance))
 
-# 5. Xử lý logic tương tác khi click chuột
+
+# 5. Xử lý logic tương tác khi click chuột / chạm màn hình
 func _on_item_slot_pressed(slot_ui: ItemSlotUI) -> void:
-	print("Bấm vào ô số: ", slot_ui.slot_index)
+	var index = slot_ui.slot_index
+	var inv_item: InventoryItem = inventory_data.slots[index]
+	
+	if inv_item != null and inv_item.item_data != null:
+		var equipment: ItemEquipment = inv_item.item_data
+		
+		# TRỪU TƯỢNG HÓA: Ra lệnh cho popup tự hiển thị dữ liệu của món đồ này
+		detail_popup.display_item(equipment)
+	else:
+		# Nếu bấm vào ô trống thì ẩn popup đi
+		detail_popup.hide()
+		
+		
+
+# Hàm nhận vào dữ liệu vật phẩm và số lượng để đưa lên UI thông tin
+func show_item_details(equipment: ItemEquipment, quantity: int) -> void:
+	print("--- THÔNG TIN VẬT PHẨM ---")
+	print("Tên: ", equipment.item_name)
+	print("Số lượng: ", quantity)
+	
+	# GIẢ SỬ: Bạn có một cụm UI tên là $DetailPanel ở trong Scene này
+	# Bạn có thể bật nó lên và gán chữ cho các Label của nó như sau:
+	#
+	# $DetailPanel.show()
+	# $DetailPanel/NameLabel.text = equipment.item_name
+	# $DetailPanel/DescriptionLabel.text = equipment.description
+	
+	# Nếu là Vũ khí thì in thêm chỉ số Sát thương (Ví dụ thuộc tính là attack_power)
+	if equipment.has_method("get_damage") or "attack_power" in equipment:
+		print("Sát thương: ", equipment.attack_power)
+		
+	# Nếu là Giáp thì in thêm chỉ số Phòng thủ (Ví dụ thuộc tính là defense)
+	if "defense" in equipment:
+		print("Phòng thủ: ", equipment.defense)
+
+# Hàm ẩn bảng thông tin khi cần
+func hide_item_details() -> void:
+	# $DetailPanel.hide()
+	pass
