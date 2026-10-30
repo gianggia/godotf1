@@ -62,6 +62,6 @@ func display_item(inv_item: Variant) -> void:
 		for stat_name in raw_bonus_stats.keys():
 			var stat_value = raw_bonus_stats[stat_name]
 			stats_text += "\n+ " + str(stat_name) + ": " + str(stat_value)
-
+	desc_label.label_settings.font_color=text_color
 	desc_label.text = stats_text
 	show()
