@@ -32,10 +32,10 @@ mouse_filter = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_right = -376.0
-offset_bottom = 33.411076
+offset_right = -526.0
+offset_bottom = 33.411
 grow_horizontal = 2
-scale = Vector2(2, 2)
+scale = Vector2(3.8405313, 3.0171156)
 
 [node name="ButtonInventory" type="Button" parent="MainPanel/TabBarContainer" unique_id=508192242]
 custom_minimum_size = Vector2(37, 31)
@@ -54,24 +54,32 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.8171396
-offset_top = 70.96158
-offset_right = -2.8171387
-offset_bottom = -50.038452
+offset_left = -9.390469
+offset_top = 103.48564
+offset_right = -65.39044
+offset_bottom = -17.514343
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.0749758, 1.197142)
 mouse_filter = 1
 
 [node name="InventoryUI" parent="MainPanel/ContentContainer" unique_id=1727145737 instance=ExtResource("2_fo0q4")]
 layout_mode = 1
 offset_top = -4.0
 offset_bottom = 4.0
+scale = Vector2(1.0316215, 0.9928806)
+
+[node name="Background" parent="MainPanel/ContentContainer/InventoryUI" index="0" unique_id=262981296]
+scale = Vector2(0.98315287, 0.8365516)
+
+[node name="ScrollContainer" parent="MainPanel/ContentContainer/InventoryUI" index="1" unique_id=627013348]
+scale = Vector2(1.2345175, 0.9990386)
 
 [node name="ItemDetails" parent="MainPanel/ContentContainer/InventoryUI" index="2" unique_id=101055643]
-offset_left = 545.5862
-offset_top = -0.7307734
-offset_right = 545.5862
-offset_bottom = -0.7307734
+offset_left = 481.8151
+offset_top = 1.0436313
+offset_right = 481.8151
+offset_bottom = 1.0436313
 
 [node name="CharacterUI" type="Control" parent="MainPanel/ContentContainer" unique_id=1441226341]
 layout_mode = 1

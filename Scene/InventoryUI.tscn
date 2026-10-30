@@ -36,7 +36,7 @@ size_flags_horizontal = 3
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 accessibility_region = true
-columns = 6
+columns = 4
 
 [node name="ItemDetails" parent="." unique_id=101055643 instance=ExtResource("2_42ho0")]
 layout_mode = 0

@@ -28,6 +28,7 @@ window/size/window_width_override=422
 window/size/window_height_override=918
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/handheld/orientation=5
 
 [input]
 
