@@ -22,8 +22,30 @@ func _ready() -> void:
 	# Gọi hàm nạp dữ liệu thực tế từ file JSON lên
 	load_inventory_from_file()
 func load_inventory_from_file() -> void:
+	# 🛠️ MẸO SỬA LỖI NHANH: Nếu muốn ép hệ thống xóa file cũ lỗi để tạo lại file mới, 
+	# bạn có thể tạm thời bỏ comment dòng dưới đây, chạy game 1 lần, rồi comment lại:
+	# DirAccess.remove_absolute(SAVE_FILE_PATH)
 
+	# 1. Kiểm tra nếu file chưa tồn tại thì tạo file mới
+	if not FileAccess.file_exists(SAVE_FILE_PATH):
+		print("📂 File save chưa tồn tại. Đang tạo file mới tại: ", SAVE_FILE_PATH)
+		var new_file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+		if new_file:
+			# Khởi tạo toàn bộ dữ liệu là một Dictionary trống rỗng {}
+			# Điều này giúp hàm inventory_data.from_dict() nhận được chính xác 1 Dictionary
+			var default_data = {}
+			new_file.store_line(JSON.stringify(default_data))
+			new_file.close()
+		else:
+			print("❌ Lỗi nghiêm trọng: Không thể tạo file mới tại hệ thống!")
+			return
+
+	# 2. Tiến hành mở file để đọc dữ liệu
 	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
+	if file == null:
+		print("❌ Lỗi: Không thể mở file để đọc dù file đã tồn tại!")
+		return
+		
 	var json_string = file.get_as_text()
 	file.close()
 	
@@ -33,13 +55,16 @@ func load_inventory_from_file() -> void:
 	if parse_result == OK:
 		var data_dict = json.get_data()
 		
-		if data_dict.has("inventory"):
-			var inventory_content = data_dict["inventory"]
-			inventory_data.from_dict(inventory_content)
+		# 3. KIỂM TRA ĐỊNH DẠNG ĐẦU VÀO: Ép kiểu dữ liệu phải là Dictionary trước khi truyền
+		if data_dict is Dictionary:
+			# Truyền thẳng toàn bộ data_dict vào hàm from_dict của bạn
+			inventory_data.from_dict(data_dict)
+		else:
+			print("❌ Lỗi: Cấu trúc file JSON đọc được không phải là Dictionary (Đang là Array hoặc kiểu khác)!")
+			return
 		
-		# 🌟 ĐÂY CHÍNH LÀ DÒNG QUAN TRỌNG: Ép UI phải vẽ lại dựa trên RAM vừa nạp
+		# 🌟 Ép UI phải vẽ lại dựa trên RAM vừa nạp
 		update_ui(inventory_data) 
-		
 		inventory_data.debug_print_inventory_contents()
 	else:
 		print("❌ Lỗi parse cấu trúc file JSON: ", json.get_error_message())
@@ -84,15 +109,14 @@ func _on_item_slot_pressed(slot_ui: ItemSlotUI) -> void:
 	var inv_item: InventoryItem = inventory_data.slots[index]
 	
 	if inv_item != null and inv_item.item_data != null:
-		var equipment: ItemEquipment = inv_item.item_data
+		# ❌ DÒNG CŨ BỊ LỖI: detail_popup.display_item(equipment)
 		
-		# TRỪU TƯỢNG HÓA: Ra lệnh cho popup tự hiển thị dữ liệu của món đồ này
-		detail_popup.display_item(equipment)
+		#  DÒNG MỚI ĐÃ SỬA: Truyền thẳng inv_item (chứa cả item_data lẫn bonus_stats) sang popup
+		detail_popup.display_item(inv_item)
 	else:
 		# Nếu bấm vào ô trống thì ẩn popup đi
 		detail_popup.hide()
-		
-		
+
 
 # Hàm nhận vào dữ liệu vật phẩm và số lượng để đưa lên UI thông tin
 func show_item_details(equipment: ItemEquipment, quantity: int) -> void:

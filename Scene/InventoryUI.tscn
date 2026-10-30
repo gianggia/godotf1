@@ -40,3 +40,5 @@ columns = 6
 
 [node name="ItemDetails" parent="." unique_id=101055643 instance=ExtResource("2_42ho0")]
 layout_mode = 0
+
+[editable path="ItemDetails"]

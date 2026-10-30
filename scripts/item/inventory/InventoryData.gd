@@ -69,37 +69,54 @@ func add_item(new_equipment: ItemEquipment) -> bool:
 
 # ==================== TO_DICT: CHỈ LƯU Ô CÓ ĐỒ CÓ CHỈ SỐ INDEX ====================
 func to_dict() -> Dictionary:
-	var active_items: Dictionary = {}
+	var active_items_dict = {}
 	
 	for i in range(slots.size()):
-		if slots[i] != null:
-			var equipment = slots[i].item_data
+		var inv_item = slots[i]
+		if inv_item and inv_item.item_data:
+			var equipment = inv_item.item_data
 			
-			# Lấy tên độ hiếm an toàn (nếu có)
-			var rarity_str: String = "Common" # Mặc định nếu lỗi
-			if equipment.rarity:
-				rarity_str = equipment.rarity.rarity_name
+			# 🌟 ĐỒNG BỘ ĐỘ HIẾM CHUẨN XÁC TỪ FILE .TRES XUỐNG JSON
+			var r_name = "Common"
+			if equipment.rarity != null:
+				if "rarity_name" in equipment.rarity:
+					r_name = equipment.rarity.rarity_name
+				elif equipment.rarity.resource_name != "":
+					r_name = equipment.rarity.resource_name
 			
-			active_items[str(i)] = {
+			# Đóng gói dữ liệu của 1 ô đồ
+			active_items_dict[str(i)] = {
 				"item_id": equipment.item_id,
-				"rarity_name": rarity_str, # <--- GHI ĐỘ HIẾM VÀO FILE JSON
-				"bonus_stats": equipment.bonus_stats,
-				"quantity": slots[i].quantity
+				"rarity_name": r_name, # Lúc này JSON sẽ lưu đúng "Rare", "Epic", "Legendary"
+				"quantity": inv_item.quantity,
+				"bonus_stats": equipment.bonus_stats
 			}
 			
 	return {
-		"max_slots": max_slots,
-		"active_items": active_items
+		"max_slots": self.max_slots,
+		"active_items": active_items_dict
 	}
 
 
 # ==================== FROM_DICT: DỰNG LẠI KHUNG 30 Ô VÀ ĐẮP ĐỒ VÀO VỊ TRÍ CŨ ====================
 func from_dict(data: Dictionary) -> void:
-	self.max_slots = data.get("max_slots", 30)
+	# 🔴 DÒNG DEBUG 1: Kiểm tra xem toàn bộ data truyền vào ban đầu có đồ không
+	print("--- DEBUG FROM_DICT ĐẦU VÀO ---")
+	print("Toàn bộ Data nhận được: ", JSON.stringify(data))
+	# 🔴 SỬA TẠI ĐÂY: Nếu data bị bọc bởi khóa "inventory", ta lấy Dictionary con bên trong nó ra
+	var target_data = data
+	if data.has("inventory") and data["inventory"] is Dictionary:
+		target_data = data["inventory"]
+	
+	# Thay 'data' bằng 'target_data' cho tất cả các dòng phía dưới
+	self.max_slots = target_data.get("max_slots", 30)
 	self.slots.clear()
 	self.slots.resize(max_slots)
 	
-	var active_items = data.get("active_items", {})
+	var active_items = target_data.get("active_items", {})
+	# 🔴 DÒNG DEBUG 2: Kiểm tra xem sau khi qua hàm .get() nó biến thành gì
+	print("Dữ liệu active_items sau khi dùng .get(): ", active_items)
+	print("---------------------------------")
 	
 	for slot_index_str in active_items:
 		var slot_index = int(slot_index_str)

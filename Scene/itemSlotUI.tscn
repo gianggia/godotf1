@@ -8,7 +8,6 @@ custom_maximum_size = Vector2(80, 80)
 offset_right = 80.0
 offset_bottom = 80.0
 focus_mode = 0
-mouse_filter = 2
 script = ExtResource("1_508su")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=646312530]

@@ -33,7 +33,7 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_right = -376.0
-offset_bottom = 40.0
+offset_bottom = 33.411076
 grow_horizontal = 2
 scale = Vector2(2, 2)
 
@@ -67,6 +67,12 @@ layout_mode = 1
 offset_top = -4.0
 offset_bottom = 4.0
 
+[node name="ItemDetails" parent="MainPanel/ContentContainer/InventoryUI" index="2" unique_id=101055643]
+offset_left = 545.5862
+offset_top = -0.7307734
+offset_right = 545.5862
+offset_bottom = -0.7307734
+
 [node name="CharacterUI" type="Control" parent="MainPanel/ContentContainer" unique_id=1441226341]
 layout_mode = 1
 anchors_preset = 15
@@ -78,3 +84,6 @@ offset_right = 0.9390259
 offset_bottom = -144.54807
 grow_horizontal = 2
 grow_vertical = 2
+
+[editable path="MainPanel/ContentContainer/InventoryUI"]
+[editable path="MainPanel/ContentContainer/InventoryUI/ItemDetails"]

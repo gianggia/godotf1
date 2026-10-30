@@ -6,6 +6,6 @@
 script = ExtResource("1_cb4hw")
 rarity_name = "Epic"
 rarity_color = Color(1, 0.30588236, 0.30588236, 1)
-drop_chance = 0.01
+drop_chance = 0.2
 stat_multiplier = 1.7
 metadata/_custom_type_script = "uid://bsle8pims7c5r"

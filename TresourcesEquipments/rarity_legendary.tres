@@ -6,6 +6,6 @@
 script = ExtResource("1_11axn")
 rarity_name = "Legendary"
 rarity_color = Color(1, 0, 0.019607844, 1)
-drop_chance = 0.001
+drop_chance = 0.1
 stat_multiplier = 2.2
 metadata/_custom_type_script = "uid://bsle8pims7c5r"

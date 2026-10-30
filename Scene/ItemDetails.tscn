@@ -5,22 +5,31 @@
 [node name="ItemDetails" type="Control" unique_id=101055643]
 layout_mode = 3
 anchors_preset = 0
+scale = Vector2(3.2961824, 1.9339876)
+mouse_filter = 2
 script = ExtResource("1_e27ei")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=666776374]
-layout_mode = 0
+layout_mode = 1
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 0
+scale = Vector2(0.99605006, 1)
+mouse_filter = 2
 
 [node name="NameLabel" type="Label" parent="." unique_id=222400328]
-layout_mode = 0
+layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
-mouse_filter = 0
+scale = Vector2(1.0087821, 1.7442386)
 
 [node name="DescLabel" type="Label" parent="." unique_id=1635546450]
-layout_mode = 0
+layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
-mouse_filter = 0
+scale = Vector2(1.0022465, 1.7605451)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=295664682]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.4509804, 1, 1, 0.4392157)
