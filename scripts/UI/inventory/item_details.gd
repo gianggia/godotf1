@@ -1,7 +1,7 @@
 # file: itemDetailPopup.gd
 extends Control
 
-@onready var name_label: Label = $NameLabel
+#@onready var name_label: Label = $NameLabel
 @onready var desc_label: Label = $DescLabel
 # @onready var icon_rect: TextureRect = $VBoxContainer/IconRect # Nếu có ảnh
 
@@ -38,10 +38,10 @@ func display_item(inv_item: Variant) -> void:
 		rarity_text = inv_item.rarity_name
 		
 	# Gán văn bản hiển thị tên
-	name_label.text = "[" + str(rarity_text) + "] " + str(equipment.item_name)
+	#name_label.text = "[" + str(rarity_text) + "] " + str(equipment.item_name)
 	
 	# 🌟 ÉP MÀU CHỮ CỦA LABEL THAY ĐỔI THEO FILE .TRES
-	name_label.add_theme_color_override("font_color", text_color)
+	#name_label.add_theme_color_override("font_color", text_color)
 	desc_label.add_theme_color_override("font_color",text_color)
 	# --- CÁC ĐOẠN ĐỌC SỐ LƯỢNG / BONUS_STATS GIỮ NGUYÊN ---
 	var qty = 1

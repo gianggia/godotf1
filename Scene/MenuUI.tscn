@@ -81,6 +81,9 @@ offset_top = 1.0436313
 offset_right = 481.8151
 offset_bottom = 1.0436313
 
+[node name="DescLabel" parent="MainPanel/ContentContainer/InventoryUI/ItemDetails" index="2" unique_id=1635546450]
+text = "abcd1234566"
+
 [node name="CharacterUI" type="Control" parent="MainPanel/ContentContainer" unique_id=1441226341]
 layout_mode = 1
 anchors_preset = 15

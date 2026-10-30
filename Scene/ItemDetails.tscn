@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://b3dbnudjyebgh" path="res://scripts/UI/inventory/item_details.gd" id="1_e27ei"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_kwm3w"]
+line_spacing = -4.315
+font_size = 7
+shadow_size = 0
+
 [node name="ItemDetails" type="Control" unique_id=101055643]
 layout_mode = 3
 anchors_preset = 0
@@ -17,19 +22,25 @@ scale = Vector2(0.99605006, 1)
 mouse_filter = 2
 
 [node name="NameLabel" type="Label" parent="." unique_id=222400328]
+visible = false
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
 scale = Vector2(1.0087821, 1.7442386)
+text = "qweasda"
 
 [node name="DescLabel" type="Label" parent="." unique_id=1635546450]
 layout_mode = 1
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 59.03305
 scale = Vector2(1.0022465, 1.7605451)
+text = "123qwe123qwe123qweqwe123qwe"
+label_settings = SubResource("LabelSettings_kwm3w")
+autowrap_mode = 1
+autowrap_trim_flags = 128
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=295664682]
 layout_mode = 1
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 103.413284
 color = Color(0.4509804, 1, 1, 0.4392157)
