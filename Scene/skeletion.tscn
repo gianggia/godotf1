@@ -1,175 +1,17 @@
 [gd_scene format=3 uid="uid://ca4nd60qkdfjt"]
 
-[sub_resource type="GDScript" id="GDScript_monster"]
-script/source = "extends CharacterBody2D
-## Quái vật Skeleton (rig cutout từ Sprite2D, animation nằm trong AnimationPlayer).
-## Animation: idle_ / walk_ / attack_ + (up, down, left, right) và die.
-## Để gây sát thương, node người chơi cần thuộc group \"player\" và có hàm take_damage(amount).
-
-signal died(monster: CharacterBody2D)
-
-enum State { IDLE, CHASE, ATTACK, DEAD }
-
-@export var max_hp: int = 30
-@export var move_speed: float = 45.0
-@export var detect_range: float = 160.0
-@export var attack_range: float = 28.0
-@export var attack_damage: int = 5
-@export var attack_cooldown: float = 1.2
-@export var target_group: StringName = &\"player\"
-
-@onready var anim: AnimationPlayer = $AnimationPlayer
-@onready var visual: Node2D = $Visual
-@onready var body_shape: CollisionShape2D = $CollisionShape2D
-@onready var attack_area: Area2D = $AttackArea
-@onready var attack_shape: CollisionShape2D = $AttackArea/CollisionShape2D
-
-var hp: int
-var state: State = State.IDLE
-var facing: StringName = &\"down\"
-var target: Node2D = null
-var _cooldown_left: float = 0.0
-
-
-func _ready() -> void:
-	hp = max_hp
-	add_to_group(\"monsters\")
-	anim.animation_finished.connect(_on_animation_finished)
-	_play(\"idle\")
-
-
-func _physics_process(delta: float) -> void:
-	if state == State.DEAD:
-		return
-
-	_cooldown_left = maxf(_cooldown_left - delta, 0.0)
-	if target == null or not is_instance_valid(target):
-		target = get_tree().get_first_node_in_group(target_group) as Node2D
-
-	match state:
-		State.IDLE:
-			_state_idle()
-		State.CHASE:
-			_state_chase()
-		State.ATTACK:
-			velocity = Vector2.ZERO
-
-	move_and_slide()
-
-
-# ---------------- Trạng thái ----------------
-func _state_idle() -> void:
-	velocity = Vector2.ZERO
-	if target != null and global_position.distance_to(target.global_position) <= detect_range:
-		state = State.CHASE
-
-
-func _state_chase() -> void:
-	if target == null:
-		state = State.IDLE
-		_play(\"idle\")
-		return
-
-	var to_target := target.global_position - global_position
-	var dist := to_target.length()
-
-	if dist > detect_range * 1.5:
-		velocity = Vector2.ZERO
-		state = State.IDLE
-		_play(\"idle\")
-		return
-
-	_face_towards(to_target)
-
-	if dist <= attack_range:
-		velocity = Vector2.ZERO
-		if _cooldown_left <= 0.0:
-			_start_attack()
-		else:
-			_play(\"idle\")
-	else:
-		velocity = to_target / dist * move_speed
-		_play(\"walk\")
-
-
-func _start_attack() -> void:
-	state = State.ATTACK
-	_cooldown_left = attack_cooldown
-	attack_shape.position = _facing_vector() * 18.0 + Vector2(0, -12)
-	_play(\"attack\")
-
-
-# Được gọi từ track \"method\" trong animation attack_* đúng khung hình chém
-func _on_hit_frame() -> void:
-	if state != State.ATTACK:
-		return
-	for body in attack_area.get_overlapping_bodies():
-		if body.is_in_group(target_group) and body.has_method(\"take_damage\"):
-			body.take_damage(attack_damage)
-
-
-func _on_animation_finished(anim_name: StringName) -> void:
-	if state == State.DEAD:
-		if anim_name == &\"die\":
-			died.emit(self)
-			queue_free()
-	elif state == State.ATTACK and String(anim_name).begins_with(\"attack\"):
-		state = State.CHASE
-
-
-# ---------------- Sát thương / chết ----------------
-func take_damage(amount: int) -> void:
-	if state == State.DEAD:
-		return
-	hp -= amount
-	visual.modulate = Color(1.0, 0.45, 0.45)
-	create_tween().tween_property(visual, \"modulate\", Color.WHITE, 0.15)
-	if hp <= 0:
-		die()
-
-
-func die() -> void:
-	if state == State.DEAD:
-		return
-	state = State.DEAD
-	velocity = Vector2.ZERO
-	body_shape.set_deferred(\"disabled\", true)
-	attack_area.set_deferred(\"monitoring\", false)
-	anim.play(\"die\")
-
-
-# ---------------- Hướng + animation ----------------
-func _face_towards(dir: Vector2) -> void:
-	# Có độ trễ nhỏ để tránh nhấp nháy khi đi chéo
-	var facing_horizontal := facing == &\"left\" or facing == &\"right\"
-	var go_horizontal: bool
-	if facing_horizontal:
-		go_horizontal = absf(dir.y) <= absf(dir.x) * 1.25
-	else:
-		go_horizontal = absf(dir.x) > absf(dir.y) * 1.25
-	if go_horizontal:
-		facing = &\"right\" if dir.x > 0.0 else &\"left\"
-	else:
-		facing = &\"down\" if dir.y > 0.0 else &\"up\"
-
-
-func _facing_vector() -> Vector2:
-	match String(facing):
-		\"up\":
-			return Vector2.UP
-		\"left\":
-			return Vector2.LEFT
-		\"right\":
-			return Vector2.RIGHT
-		_:
-			return Vector2.DOWN
-
-
-func _play(base_name: String) -> void:
-	var anim_name := \"%s_%s\" % [base_name, facing]
-	if anim.current_animation != anim_name:
-		anim.play(anim_name)
-"
+[ext_resource type="Script" uid="uid://b4jmon67wx8af" path="res://scripts/character/monster_.gd" id="1_8finx"]
+[ext_resource type="Texture2D" uid="uid://dwsiaw5tkgavd" path="res://Freeassets/2D-Zombie-Kids-Free-Sprite/PNG/Bodyparts/left_leg (Custom).png" id="2_nceiq"]
+[ext_resource type="Texture2D" uid="uid://c7hrijrivf8a1" path="res://Freeassets/2D-Zombie-Kids-Free-Sprite/PNG/Bodyparts/left_feet.png" id="2_pveo6"]
+[ext_resource type="Texture2D" uid="uid://bn4lgg3ayx3sj" path="res://Freeassets/2D-Zombie-Kids-Free-Sprite/PNG/Bodyparts/right_feet.png" id="3_us18e"]
+[ext_resource type="Texture2D" uid="uid://c3t50awe2wpf" path="res://Freeassets/2D-Zombie-Kids-Free-Sprite/PNG/Bodyparts/right_leg (Custom).png" id="4_ergir"]
+[ext_resource type="Texture2D" uid="uid://drnj252vlbrno" path="res://Freeassets/2D-Zombie-Kids-Free-Sprite/PNG/Bodyparts/skirt (Custom).png" id="6_dycn5"]
+[ext_resource type="Texture2D" uid="uid://dr8ypw7lwg2ee" path="res://Freeassets/2D-Zombie-Kids-Free-Sprite/PNG/Bodyparts/left_sholder (Custom).png" id="7_fc5p4"]
+[ext_resource type="Texture2D" uid="uid://bo3jrdu42kgkb" path="res://Freeassets/2D-Zombie-Kids-Free-Sprite/PNG/Bodyparts/left_arm (Custom).png" id="8_2mlhq"]
+[ext_resource type="Texture2D" uid="uid://dd0q8o27gfd0p" path="res://Freeassets/2D-Zombie-Kids-Free-Sprite/PNG/Bodyparts/body_2 (Custom).png" id="9_hyvvj"]
+[ext_resource type="Texture2D" uid="uid://mmxvftqlu2if" path="res://Freeassets/2D-Zombie-Kids-Free-Sprite/PNG/Bodyparts/head1 (Custom).png" id="10_uvom3"]
+[ext_resource type="Texture2D" uid="uid://cesgqs1ob0au3" path="res://Freeassets/2D-Zombie-Kids-Free-Sprite/PNG/Bodyparts/right_sholder (Custom).png" id="11_qeuw4"]
+[ext_resource type="Texture2D" uid="uid://raffacml1ki2" path="res://Freeassets/2D-Zombie-Kids-Free-Sprite/PNG/Bodyparts/right_arm (Custom).png" id="12_h5537"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
 radius = 6.0
@@ -188,14 +30,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="Gradient" id="Gradient_0"]
-colors = PackedColorArray(0.92, 0.9, 0.82, 1, 0.92, 0.9, 0.82, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0"]
-gradient = SubResource("Gradient_0")
-width = 4
-height = 10
-
 [sub_resource type="Gradient" id="Gradient_1"]
 colors = PackedColorArray(0.12, 0.1, 0.14, 1, 0.12, 0.1, 0.14, 1)
 
@@ -203,14 +37,6 @@ colors = PackedColorArray(0.12, 0.1, 0.14, 1, 0.12, 0.1, 0.14, 1)
 gradient = SubResource("Gradient_1")
 width = 6
 height = 12
-
-[sub_resource type="Gradient" id="Gradient_2"]
-colors = PackedColorArray(0.92, 0.9, 0.82, 1, 0.92, 0.9, 0.82, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2"]
-gradient = SubResource("Gradient_2")
-width = 6
-height = 2
 
 [sub_resource type="Gradient" id="Gradient_3"]
 colors = PackedColorArray(0.12, 0.1, 0.14, 1, 0.12, 0.1, 0.14, 1)
@@ -220,14 +46,6 @@ gradient = SubResource("Gradient_3")
 width = 8
 height = 4
 
-[sub_resource type="Gradient" id="Gradient_4"]
-colors = PackedColorArray(0.92, 0.9, 0.82, 1, 0.92, 0.9, 0.82, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4"]
-gradient = SubResource("Gradient_4")
-width = 12
-height = 5
-
 [sub_resource type="Gradient" id="Gradient_5"]
 colors = PackedColorArray(0.12, 0.1, 0.14, 1, 0.12, 0.1, 0.14, 1)
 
@@ -235,14 +53,6 @@ colors = PackedColorArray(0.12, 0.1, 0.14, 1, 0.12, 0.1, 0.14, 1)
 gradient = SubResource("Gradient_5")
 width = 14
 height = 7
-
-[sub_resource type="Gradient" id="Gradient_6"]
-colors = PackedColorArray(0.92, 0.9, 0.82, 1, 0.92, 0.9, 0.82, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6"]
-gradient = SubResource("Gradient_6")
-width = 4
-height = 8
 
 [sub_resource type="Gradient" id="Gradient_7"]
 colors = PackedColorArray(0.12, 0.1, 0.14, 1, 0.12, 0.1, 0.14, 1)
@@ -268,14 +78,6 @@ gradient = SubResource("Gradient_9")
 width = 4
 height = 12
 
-[sub_resource type="Gradient" id="Gradient_10"]
-colors = PackedColorArray(0.92, 0.9, 0.82, 1, 0.92, 0.9, 0.82, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_10"]
-gradient = SubResource("Gradient_10")
-width = 12
-height = 2
-
 [sub_resource type="Gradient" id="Gradient_11"]
 colors = PackedColorArray(0.12, 0.1, 0.14, 1, 0.12, 0.1, 0.14, 1)
 
@@ -283,14 +85,6 @@ colors = PackedColorArray(0.12, 0.1, 0.14, 1, 0.12, 0.1, 0.14, 1)
 gradient = SubResource("Gradient_11")
 width = 14
 height = 4
-
-[sub_resource type="Gradient" id="Gradient_12"]
-colors = PackedColorArray(0.92, 0.9, 0.82, 1, 0.92, 0.9, 0.82, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_12"]
-gradient = SubResource("Gradient_12")
-width = 10
-height = 2
 
 [sub_resource type="Gradient" id="Gradient_13"]
 colors = PackedColorArray(0.12, 0.1, 0.14, 1, 0.12, 0.1, 0.14, 1)
@@ -3854,7 +3648,7 @@ tracks/16/keys = {
 }
 tracks/17/type = "value"
 tracks/17/imported = false
-tracks/17/enabled = true
+tracks/17/enabled = false
 tracks/17/path = NodePath("Visual/Hips/Torso/Head/Face:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
@@ -3866,7 +3660,7 @@ tracks/17/keys = {
 }
 tracks/18/type = "value"
 tracks/18/imported = false
-tracks/18/enabled = true
+tracks/18/enabled = false
 tracks/18/path = NodePath("Visual/Hips/Torso/Head/Face:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
@@ -3878,7 +3672,7 @@ tracks/18/keys = {
 }
 tracks/19/type = "value"
 tracks/19/imported = false
-tracks/19/enabled = true
+tracks/19/enabled = false
 tracks/19/path = NodePath("Visual/Hips/Torso/Head/Face/EyeL:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
@@ -3890,7 +3684,7 @@ tracks/19/keys = {
 }
 tracks/20/type = "value"
 tracks/20/imported = false
-tracks/20/enabled = true
+tracks/20/enabled = false
 tracks/20/path = NodePath("Visual/Hips/Torso/Head/Face/Nose:visible")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
@@ -5076,7 +4870,8 @@ _data = {
 [node name="Monster" type="CharacterBody2D" unique_id=1020747375]
 collision_layer = 2
 motion_mode = 1
-script = SubResource("GDScript_monster")
+script = ExtResource("1_8finx")
+target_group = &"Char"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=142834531]
 position = Vector2(0, -5)
@@ -5097,11 +4892,11 @@ position = Vector2(0, -1)
 texture = SubResource("GradientTexture2D_shadow")
 
 [node name="Hips" type="Node2D" parent="Visual" unique_id=290669836]
-position = Vector2(0, -20.296291)
+position = Vector2(0, -20)
 
 [node name="LegL" type="Sprite2D" parent="Visual/Hips" unique_id=59645193]
-position = Vector2(-4, 0)
-texture = SubResource("GradientTexture2D_0")
+position = Vector2(-1, 0)
+texture = ExtResource("2_nceiq")
 centered = false
 offset = Vector2(-2, 0)
 
@@ -5113,7 +4908,7 @@ offset = Vector2(-3, -1)
 
 [node name="ShinL" type="Sprite2D" parent="Visual/Hips/LegL" unique_id=729703650]
 position = Vector2(0, 10)
-texture = SubResource("GradientTexture2D_0")
+texture = ExtResource("2_nceiq")
 centered = false
 offset = Vector2(-2, 0)
 
@@ -5124,7 +4919,9 @@ centered = false
 offset = Vector2(-3, -1)
 
 [node name="Foot" type="Sprite2D" parent="Visual/Hips/LegL/ShinL" unique_id=181942504]
-texture = SubResource("GradientTexture2D_2")
+position = Vector2(-3, 7)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_pveo6")
 centered = false
 offset = Vector2(-3, 8)
 
@@ -5135,8 +4932,8 @@ centered = false
 offset = Vector2(-4, 7)
 
 [node name="LegR" type="Sprite2D" parent="Visual/Hips" unique_id=670041615]
-position = Vector2(4, 0)
-texture = SubResource("GradientTexture2D_0")
+position = Vector2(1, 0)
+texture = ExtResource("4_ergir")
 centered = false
 offset = Vector2(-2, 0)
 
@@ -5148,7 +4945,7 @@ offset = Vector2(-3, -1)
 
 [node name="ShinR" type="Sprite2D" parent="Visual/Hips/LegR" unique_id=2020156030]
 position = Vector2(0, 10)
-texture = SubResource("GradientTexture2D_0")
+texture = ExtResource("4_ergir")
 centered = false
 offset = Vector2(-2, 0)
 
@@ -5159,7 +4956,9 @@ centered = false
 offset = Vector2(-3, -1)
 
 [node name="Foot" type="Sprite2D" parent="Visual/Hips/LegR/ShinR" unique_id=1562947933]
-texture = SubResource("GradientTexture2D_2")
+position = Vector2(-5, 7)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("3_us18e")
 centered = false
 offset = Vector2(-3, 8)
 
@@ -5170,7 +4969,9 @@ centered = false
 offset = Vector2(-4, 7)
 
 [node name="Pelvis" type="Sprite2D" parent="Visual/Hips" unique_id=211391686]
-texture = SubResource("GradientTexture2D_4")
+visible = false
+scale = Vector2(0.6, 1)
+texture = ExtResource("6_dycn5")
 centered = false
 offset = Vector2(-6, -3)
 
@@ -5182,11 +4983,11 @@ offset = Vector2(-7, -4)
 
 [node name="Torso" type="Node2D" parent="Visual/Hips" unique_id=1590080484]
 position = Vector2(0, -3)
+rotation = 0.05
 
 [node name="ArmL" type="Sprite2D" parent="Visual/Hips/Torso" unique_id=1592140313]
-position = Vector2(-8, -8)
-rotation = 0.0077780574
-texture = SubResource("GradientTexture2D_6")
+position = Vector2(-1, -8)
+texture = ExtResource("7_fc5p4")
 centered = false
 offset = Vector2(-2, 0)
 
@@ -5198,7 +4999,7 @@ offset = Vector2(-3, -1)
 
 [node name="ForeL" type="Sprite2D" parent="Visual/Hips/Torso/ArmL" unique_id=417954296]
 position = Vector2(0, 8)
-texture = SubResource("GradientTexture2D_6")
+texture = ExtResource("8_2mlhq")
 centered = false
 offset = Vector2(-2, 0)
 
@@ -5209,6 +5010,7 @@ centered = false
 offset = Vector2(-3, -1)
 
 [node name="Chest" type="Node2D" parent="Visual/Hips/Torso" unique_id=105924535]
+scale = Vector2(0.55, 1)
 
 [node name="Ribs" type="Node2D" parent="Visual/Hips/Torso/Chest" unique_id=410895597]
 
@@ -5224,7 +5026,8 @@ centered = false
 offset = Vector2(-2, -11)
 
 [node name="Rib1" type="Sprite2D" parent="Visual/Hips/Torso/Chest/Ribs" unique_id=1344363587]
-texture = SubResource("GradientTexture2D_10")
+visible = false
+texture = ExtResource("9_hyvvj")
 centered = false
 offset = Vector2(-6, -3)
 
@@ -5235,7 +5038,8 @@ centered = false
 offset = Vector2(-7, -4)
 
 [node name="Rib2" type="Sprite2D" parent="Visual/Hips/Torso/Chest/Ribs" unique_id=1518057486]
-texture = SubResource("GradientTexture2D_10")
+visible = false
+texture = ExtResource("9_hyvvj")
 centered = false
 offset = Vector2(-6, -6)
 
@@ -5246,7 +5050,7 @@ centered = false
 offset = Vector2(-7, -7)
 
 [node name="Rib3" type="Sprite2D" parent="Visual/Hips/Torso/Chest/Ribs" unique_id=789060272]
-texture = SubResource("GradientTexture2D_12")
+texture = ExtResource("9_hyvvj")
 centered = false
 offset = Vector2(-5, -9)
 
@@ -5275,20 +5079,23 @@ offset = Vector2(-1, -10)
 
 [node name="Head" type="Node2D" parent="Visual/Hips/Torso" unique_id=1794970098]
 position = Vector2(0, -10)
-rotation = 0.011110972
 
 [node name="Skull" type="Sprite2D" parent="Visual/Hips/Torso/Head" unique_id=1144499780]
-texture = SubResource("GradientTexture2D_14")
+position = Vector2(-7, -9)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_uvom3")
 centered = false
 offset = Vector2(-6, -11)
 
 [node name="Outline" type="Sprite2D" parent="Visual/Hips/Torso/Head/Skull" unique_id=753918262]
+visible = false
 show_behind_parent = true
 texture = SubResource("GradientTexture2D_15")
 centered = false
 offset = Vector2(-7, -12)
 
 [node name="Face" type="Node2D" parent="Visual/Hips/Torso/Head" unique_id=2083557429]
+position = Vector2(1, 0)
 
 [node name="Jaw" type="Sprite2D" parent="Visual/Hips/Torso/Head/Face" unique_id=62297549]
 texture = SubResource("GradientTexture2D_16")
@@ -5302,6 +5109,7 @@ centered = false
 offset = Vector2(-5, -2)
 
 [node name="EyeL" type="Sprite2D" parent="Visual/Hips/Torso/Head/Face" unique_id=757865699]
+visible = false
 position = Vector2(-3, -7)
 texture = SubResource("GradientTexture2D_18")
 centered = false
@@ -5324,15 +5132,15 @@ centered = false
 offset = Vector2(-1, -1)
 
 [node name="Nose" type="Sprite2D" parent="Visual/Hips/Torso/Head/Face" unique_id=1528235728]
+visible = false
 position = Vector2(0, -3)
 texture = SubResource("GradientTexture2D_20")
 centered = false
 offset = Vector2(-1, -1)
 
 [node name="ArmR" type="Sprite2D" parent="Visual/Hips/Torso" unique_id=1123974450]
-position = Vector2(8, -8)
-rotation = -0.0077780574
-texture = SubResource("GradientTexture2D_6")
+position = Vector2(1, -8)
+texture = ExtResource("11_qeuw4")
 centered = false
 offset = Vector2(-2, 0)
 
@@ -5344,7 +5152,7 @@ offset = Vector2(-3, -1)
 
 [node name="ForeR" type="Sprite2D" parent="Visual/Hips/Torso/ArmR" unique_id=732723111]
 position = Vector2(0, 8)
-texture = SubResource("GradientTexture2D_6")
+texture = ExtResource("12_h5537")
 centered = false
 offset = Vector2(-2, 0)
 

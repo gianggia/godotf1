@@ -26,7 +26,7 @@
 [ext_resource type="Resource" uid="uid://btbtym10v5pc1" path="res://TresourcesEquipments/rarity_rare.tres" id="20_rqitt"]
 [ext_resource type="Resource" uid="uid://bcngy7v0j6gsg" path="res://TresourcesEquipments/rarity_epic.tres" id="21_yyoe5"]
 [ext_resource type="PackedScene" uid="uid://cormgltnwwase" path="res://Scene/MenuUI.tscn" id="25_hdfjr"]
-[ext_resource type="PackedScene" path="res://Scene/skeletion.tscn" id="27_im84m"]
+[ext_resource type="PackedScene" uid="uid://ca4nd60qkdfjt" path="res://Scene/skeletion.tscn" id="27_im84m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3opw3"]
 texture = ExtResource("8_blrne")
@@ -689,7 +689,7 @@ rarities = Array[ExtResource("18_b4pas")]([ExtResource("19_ub8w0"), ExtResource(
 [node name="MenuUi" parent="." unique_id=1924262000 instance=ExtResource("25_hdfjr")]
 
 [node name="Monster" parent="." unique_id=1292553278 instance=ExtResource("27_im84m")]
-position = Vector2(330, 1053)
+position = Vector2(354, 332)
 
 [connection signal="pressed" from="BaseHUDCanvasLayer/MobileControls/BtnAtk" to="Char" method="_on_touch_screen_button_pressed"]
 [connection signal="pressed" from="BaseHUDCanvasLayer/MobileControls/BtnMenu" to="MenuUi" method="toggle_menu"]
