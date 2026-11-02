@@ -1,0 +1,17 @@
+TERMS OF USE / LICENSE AGREEMENT
+
+Thank you for downloading/purchasing this weapon pixel art pack! By downloading or using these assets, you agree to the following terms and conditions:
+
+1. ALLOWED USAGE & ATTRIBUTION RULES:
+- Commercial Projects (CREDIT REQUIRED): You are free to use these assets in commercial games, animations, or other monetized media projects. However, you must provide clear credit to the creator. 
+  * How to credit: You must include the text "Weapon Assets by [Kusomisoo]" or link directly to this Itch.io page (https://kusomisoo.itch.io) in your project's credits, description, or documentation.
+- Non-Commercial Projects (Credit Optional): If your project is completely free, non-profit, or educational, giving credit is highly appreciated but not mandatory.
+- Modification: You are allowed to resize, recolor, crop, or modify these assets to better fit the visual style of your project.
+
+2. PROHIBITED USAGE (WHAT YOU CANNOT DO):
+- No Redistribution: You may not resell, redistribute, sub-license, or share these assets (in their original or modified form) as standalone files, asset packs, or stock materials. They must be embedded within a larger project (like a game).
+- No NFT & AI Usage: These assets cannot be used for blockchain, cryptocurrency, or NFT-related projects. Additionally, they cannot be used as training data for generative Artificial Intelligence (AI) models.
+
+3. DISCLAIMER & OWNERSHIP:
+- Copyright: The intellectual property and copyright of the original pixel art remain solely with [Kusomisoo].
+- Limitation of Liability: These assets are provided "as is" without warranty of any kind. The creator is not liable for any damages or losses arising from the use of these assets.

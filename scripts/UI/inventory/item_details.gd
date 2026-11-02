@@ -1,55 +1,67 @@
-# file: itemDetailPopup.gd
 extends Control
 
 #@onready var name_label: Label = $NameLabel
 @onready var desc_label: Label = $DescLabel
-# @onready var icon_rect: TextureRect = $VBoxContainer/IconRect # Nếu có ảnh
+
+@onready var icon_frame: Control = $IconFrame
+
 
 func _ready() -> void:
 	hide() # Mặc định mới vào game thì ẩn popup này đi
+
 
 # Hàm để nhận dữ liệu từ ngoài truyền vào và hiển thị lên
 func display_item(inv_item: Variant) -> void:
 	if inv_item == null:
 		hide()
 		return
-		
+
 	var equipment: ItemEquipment = null
 	if "item_data" in inv_item:
 		equipment = inv_item.item_data
-		
+
 	if equipment == null:
 		print("❌ Lỗi: Không tìm thấy dữ liệu ItemEquipment tĩnh!")
 		return
 
-	# --- ĐỌC DỮ LIỆU ĐỘ HIẾM VÀ ĐỔI MÀU CHỮ ---
+	# --- ĐỌC DỮ LIỆU ĐỘ HIẾM VÀ ĐỔI MÀU ---
 	var rarity_text = "Common"
-	var text_color = Color.WHITE # Màu mặc định là Trắng nếu không tìm thấy file cấu hình
-	
+	var rarity_color := Color.WHITE
+
 	if equipment.rarity != null:
-		# Lấy thông tin trực tiếp từ Object tài nguyên .tres đã nạp trong RAM ở hàm from_dict
 		if "rarity_name" in equipment.rarity:
 			rarity_text = equipment.rarity.resource_name if equipment.rarity.resource_name != "" else equipment.rarity.rarity_name
-		
-		# 🌟 LẤY MÀU SẮC ĐÃ CẤU HÌNH TỪ FILE TRES
 		if "rarity_color" in equipment.rarity:
-			text_color = equipment.rarity.rarity_color
+			rarity_color = equipment.rarity.rarity_color
 	elif "rarity_name" in inv_item:
 		rarity_text = inv_item.rarity_name
-		
-	# Gán văn bản hiển thị tên
-	#name_label.text = "[" + str(rarity_text) + "] " + str(equipment.item_name)
+
+	# Tên + màu độ hiếm (chỉ tên và viền đổi màu, phần mô tả giữ màu giấy da)
+	desc_label.text = "[" + str(rarity_text) + "] " + str(equipment.item_name)
+	desc_label.add_theme_color_override("font_color", rarity_color)
+
+	# Viền popup đổi theo độ hiếm
+	var box := get_theme_stylebox("panel").duplicate() as StyleBoxFlat
+	if box:
+		box.border_color = rarity_color
+		add_theme_stylebox_override("panel", box)
+
+	# Icon: thử vài tên property phổ biến, ẩn khung nếu không có
+	var tex: Texture2D = null
+	for prop in ["icon", "texture"]:
+		if prop in equipment and equipment.get(prop) is Texture2D:
+			tex = equipment.get(prop)
+			break
 	
-	# 🌟 ÉP MÀU CHỮ CỦA LABEL THAY ĐỔI THEO FILE .TRES
-	#name_label.add_theme_color_override("font_color", text_color)
-	desc_label.add_theme_color_override("font_color",text_color)
-	# --- CÁC ĐOẠN ĐỌC SỐ LƯỢNG / BONUS_STATS GIỮ NGUYÊN ---
+	icon_frame.visible = tex != null
+
+	# --- SỐ LƯỢNG / CHỈ SỐ ---
 	var qty = 1
 	if "quantity" in inv_item: qty = inv_item.quantity
 
 	var stats_text = equipment.description if equipment.description else "Vật phẩm trang bị."
 	stats_text += "\nSố lượng: " + str(qty)
-	
+
 	if "base_attack" in equipment and equipment.base_attack > 0:
 		stats_text += "\nSát thương gốc: " + str(equipment.base_attack)
 	if "base_defense" in equipment and equipment.base_defense > 0:
@@ -65,3 +77,5 @@ func display_item(inv_item: Variant) -> void:
 
 	desc_label.text = stats_text
 	show()
+	# Thu/giãn panel cho vừa nội dung mới
+	reset_size.call_deferred()
