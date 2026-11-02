@@ -5,6 +5,87 @@
 [ext_resource type="PackedScene" uid="uid://d4beovqrdlq1c" path="res://Scene/InventoryUI.tscn" id="2_fo0q4"]
 [ext_resource type="Texture2D" uid="uid://djn22m8bhiifr" path="res://Freeassets/25.07 - Free Mana Seed RPG Starter Pack/npcs/npc man A v02.png" id="3_682di"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.09, 0.07, 0.11, 0.97)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.78, 0.6, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.15, 0.11, 0.17, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.45, 0.33, 0.15, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_pressed"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.3, 0.22, 0.1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.78, 0.6, 0.25, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_hover"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.22, 0.16, 0.2, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78, 0.6, 0.25, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_active"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.36, 0.26, 0.1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(1, 0.82, 0.4, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_682di"]
 atlas = ExtResource("2_cy0il")
 region = Rect2(97, 30, 37, 31)
@@ -17,84 +98,155 @@ region = Rect2(99, 0, 32, 32)
 layer = 2
 script = ExtResource("1_r0lxe")
 
+[node name="Dimmer" type="ColorRect" parent="." unique_id=400710678]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
 [node name="MainPanel" type="Panel" parent="." unique_id=1487237297]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -44.0
-offset_bottom = -507.0
+offset_left = 12.0
+offset_top = 48.0
+offset_right = -12.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.0649096, 1.691056)
-mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="TabBarContainer" type="HBoxContainer" parent="MainPanel" unique_id=939511895]
+[node name="TitleLabel" type="Label" parent="MainPanel" unique_id=704763909]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_right = -526.0
-offset_bottom = 33.411
+offset_left = 16.0
+offset_top = 10.0
+offset_right = -72.0
+offset_bottom = 54.0
 grow_horizontal = 2
-scale = Vector2(3.8405313, 3.0171156)
+theme_override_colors/font_color = Color(1, 0.86, 0.45, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.08, 0.02, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 26
+text = "MENU"
+vertical_alignment = 1
 
-[node name="ButtonInventory" type="Button" parent="MainPanel/TabBarContainer" unique_id=508192242]
-custom_minimum_size = Vector2(37, 31)
-custom_maximum_size = Vector2(37, 31)
-layout_mode = 2
-icon = SubResource("AtlasTexture_682di")
+[node name="CloseButton" type="Button" parent="MainPanel" unique_id=1304547835]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_top = 8.0
+offset_right = -12.0
+offset_bottom = 56.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.88, 0.83, 0.72, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.86, 0.45, 1)
+theme_override_colors/font_hover_color = Color(1, 0.86, 0.45, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tab_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tab_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "X"
 
-[node name="ButtonCharacter" type="Button" parent="MainPanel/TabBarContainer" unique_id=1628174749]
-custom_minimum_size = Vector2(31, 31)
-custom_maximum_size = Vector2(31, 31)
-layout_mode = 2
-icon = SubResource("AtlasTexture_e2ax3")
+[node name="TitleDivider" type="ColorRect" parent="MainPanel" unique_id=346260307]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 12.0
+offset_top = 58.0
+offset_right = -12.0
+offset_bottom = 59.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color(0.78, 0.6, 0.25, 0.7)
 
 [node name="ContentContainer" type="Control" parent="MainPanel" unique_id=791723955]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -9.390469
-offset_top = 103.48564
-offset_right = -65.39044
-offset_bottom = -17.514343
+offset_left = 10.0
+offset_top = 66.0
+offset_right = -10.0
+offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.0749758, 1.197142)
 mouse_filter = 1
 
 [node name="InventoryUI" parent="MainPanel/ContentContainer" unique_id=1727145737 instance=ExtResource("2_fo0q4")]
 layout_mode = 1
-offset_top = -4.0
-offset_bottom = 4.0
-scale = Vector2(1.0316215, 0.9928806)
-
-[node name="ItemDetails" parent="MainPanel/ContentContainer/InventoryUI" index="0" unique_id=101055643]
-offset_left = 352.25854
-offset_top = 6.018703
-offset_right = 352.25854
-offset_bottom = 6.018703
-
-[node name="DescLabel" parent="MainPanel/ContentContainer/InventoryUI/ItemDetails" index="7" unique_id=1635546450]
-text = "abcd1234566"
-
-[node name="Background" parent="MainPanel/ContentContainer/InventoryUI" index="1" unique_id=262981296]
-scale = Vector2(0.98315287, 0.8365516)
-
-[node name="ScrollContainer" parent="MainPanel/ContentContainer/InventoryUI" index="2" unique_id=627013348]
-scale = Vector2(1.2345175, 0.9990386)
 
 [node name="CharacterUI" type="Control" parent="MainPanel/ContentContainer" unique_id=1441226341]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.93904567
-offset_top = -3.5480652
-offset_right = 0.9390259
-offset_bottom = -144.54807
 grow_horizontal = 2
 grow_vertical = 2
 
-[editable path="MainPanel/ContentContainer/InventoryUI"]
-[editable path="MainPanel/ContentContainer/InventoryUI/ItemDetails"]
+[node name="TabBarContainer" type="HBoxContainer" parent="MainPanel" unique_id=939511895]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -74.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="ButtonInventory" type="Button" parent="MainPanel/TabBarContainer" unique_id=508192242]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.88, 0.83, 0.72, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.86, 0.45, 1)
+theme_override_colors/font_hover_color = Color(1, 0.86, 0.45, 1)
+theme_override_colors/font_disabled_color = Color(1, 0.86, 0.45, 1)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+theme_override_constants/icon_max_width = 36
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tab_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tab_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tab_active")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Túi đồ"
+icon = SubResource("AtlasTexture_682di")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="ButtonCharacter" type="Button" parent="MainPanel/TabBarContainer" unique_id=1628174749]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.88, 0.83, 0.72, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.86, 0.45, 1)
+theme_override_colors/font_hover_color = Color(1, 0.86, 0.45, 1)
+theme_override_colors/font_disabled_color = Color(1, 0.86, 0.45, 1)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+theme_override_constants/icon_max_width = 36
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tab_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tab_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tab_active")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Nhân vật"
+icon = SubResource("AtlasTexture_e2ax3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true

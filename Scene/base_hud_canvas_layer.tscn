@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://cswj6vsaxn75m"]
+
+[ext_resource type="Script" uid="uid://cv35qrracw7w1" path="res://Scene/base_hud.gd" id="1_hud"]
+[ext_resource type="Script" uid="uid://dflpkyxlefmu4" path="res://Scene/touch_button.gd" id="2_btn"]
+[ext_resource type="Script" uid="uid://cnirpa4vydyu0" path="res://Scene/joystick.gd" id="5_6op8x"]
+[ext_resource type="Texture2D" uid="uid://o6p2qilb1u1o" path="res://Simple Mobile Joystick/Simple Mobile Joystick/Move Joystick Background.png" id="6_hhnrn"]
+[ext_resource type="Texture2D" uid="uid://cegthcyhassh1" path="res://Simple Mobile Joystick/Simple Mobile Joystick/Joystick Handle.png" id="7_48nrv"]
+[ext_resource type="Texture2D" uid="uid://d3ct1x0v1aeyq" path="res://Simple Mobile Joystick/Simple Mobile Joystick/Aim Joystick Handle.png" id="8_eac1v"]
+[ext_resource type="Texture2D" uid="uid://erfgf7no4gy7" path="res://Touch Screen Buttons V1/Touch Screen Buttons V1/4 directional hexagonal shape/touch_menu.png" id="9_7q7k7"]
+[ext_resource type="Texture2D" uid="uid://dp36wqidf68fu" path="res://Touch Screen Buttons V1/Touch Screen Buttons V1/4 directional hexagonal shape/touch_reload.png" id="10_mfgiq"]
+
+[node name="BaseHUDCanvasLayer" type="CanvasLayer" unique_id=810435966]
+layer = 10
+script = ExtResource("1_hud")
+
+[node name="MobileControls" type="Control" parent="." unique_id=1075134894]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Joystick" type="Control" parent="MobileControls" unique_id=958828097]
+layout_mode = 1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("5_6op8x")
+
+[node name="base" type="TextureRect" parent="MobileControls/Joystick" unique_id=941715810]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 160.0
+mouse_filter = 2
+texture = ExtResource("6_hhnrn")
+expand_mode = 1
+
+[node name="tip" type="TextureRect" parent="MobileControls/Joystick/base" unique_id=1444941728]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 120.0
+offset_bottom = 120.0
+mouse_filter = 2
+texture = ExtResource("7_48nrv")
+expand_mode = 1
+
+[node name="BtnAtk" type="Control" parent="MobileControls" unique_id=725832179]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -230.0
+offset_right = -28.0
+offset_bottom = -110.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("2_btn")
+icon = ExtResource("8_eac1v")
+
+[node name="BtnMenu" type="Control" parent="MobileControls" unique_id=1807572313]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 80.0
+grow_horizontal = 0
+mouse_filter = 2
+script = ExtResource("2_btn")
+icon = ExtResource("9_7q7k7")
+
+[node name="lootBtn" type="Control" parent="MobileControls" unique_id=1091102294]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -255.0
+offset_top = -243.0
+offset_right = -177.0
+offset_bottom = -165.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("2_btn")
+icon = ExtResource("10_mfgiq")
+
+[node name="Skill1" type="Control" parent="MobileControls" unique_id=28429241]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -209.0
+offset_top = -314.0
+offset_right = -131.0
+offset_bottom = -236.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("2_btn")
+text = "S1"
+cooldown_time = 3.0
+
+[node name="Skill2" type="Control" parent="MobileControls" unique_id=1751015049]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -342.0
+offset_right = -54.0
+offset_bottom = -264.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("2_btn")
+text = "S2"
+cooldown_time = 5.0
+
+[node name="Skill3" type="Control" parent="MobileControls" unique_id=399287826]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -150.0
+offset_right = -222.0
+offset_bottom = -72.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("2_btn")
+text = "S3"
+cooldown_time = 8.0
